@@ -1,0 +1,75 @@
+//! strategies.js -the entire module- before optimizing with DRY principles (BEGINNING)
+//? -----------------------------------------------------
+
+/*
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const FacebookStrategy = require("passport-facebook").Strategy;
+const { User } = require("./../database/db");
+
+
+// (NOTES: @STRATEGIES 001)
+//* "local" strategy is the passportAuth file
+
+! creates a "google" strategy (OAuth 2.0)
+exports.googleStrategy = new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: process.env.GOOGLE_CALLBACK_URL,
+    userProfileURL: process.env.GOOGLE_USER_PROFILE_URL,
+},
+    function (accessToken, refreshToken, profile, done) {
+        ! IMPORTANT: You must install mongoose-findorcreate package before using the method
+        User.findOrCreate({ username: profile._json.email }, async function (err, user) {
+            if (!err) {
+                const newGoogleAccountObj = { accountType: "google", uid: profile.id };
+                await createNewAccountHelper(user, newGoogleAccountObj);
+                return done(err, user);
+            } else {
+                console.log(err);
+            }
+        });
+    }
+);
+
+! creates a "facebook" strategy (OAuth 2.0)
+exports.facebookStrategy = new FacebookStrategy(
+    {
+        clientID: process.env.FACEBOOK_CLIENT_ID,
+        clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+        profileFields: ["id", "displayName", "email"]
+    },
+    function (accessToken, refreshToken, profile, done) {
+        ! IMPORTANT: You must install mongoose-findorcreate package before using the method
+        User.findOrCreate({ username: profile._json.email }, async function (err, user) {
+            if (!err) {
+                const newFacebookAccObj = { accountType: "facebook", uid: profile._json.id };
+                await createNewAccountHelper(user, newFacebookAccObj);
+                return done(err, user);
+            } else {
+                console.log(err);
+            }
+        });
+    }
+);
+
+* This helper function is invoked while instantiating new strategies (ex: facebook, google, etc.)
+function createNewAccountHelper(user, newAccountObj) {
+    // Create new map for a users account property -ONLY ONCE- (note: an empty map is still falsy)
+    if (user && !user.accounts) {
+        user.accounts = new Map();
+        user.accounts.set(newAccountObj.accountType, newAccountObj);
+        user.save();
+    }
+    // If the specified account does not exists in the already existing account map
+    else if (!user.accounts.get(newAccountObj.accountType)) {
+        user.accounts.set(newAccountObj.accountType, newAccountObj);
+        user.save();
+    }
+    console.log(`${newAccountObj.accountType} account added to accounts map on USER: `, user);
+    return user;
+}
+*/
+
+//! strategies.js -the entire module- before optimizing with DRY principles (END)
+//? -----------------------------------------------------
