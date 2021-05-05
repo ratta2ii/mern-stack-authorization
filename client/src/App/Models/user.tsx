@@ -1,6 +1,8 @@
 export interface User {
-    _id: any;
+    _id: string;
     username: string;
     password: string;
-    secret: string;
+    localAccount?: boolean;
+    accounts?: any,
+    secret?: string;
 }

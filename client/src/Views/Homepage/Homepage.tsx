@@ -9,17 +9,18 @@ const HomePage = () => {
         <Header as="h1" inverted>
           <Image
             size="massive"
-            src="/assets/logo.png"
+            src="/assets/passport-js-icon.png"
             alt="logo"
             style={{ marginBottom: 12 }}
           />
-          MERN Stack Authentication
+          MERN Stack
         </Header>
-        <Header
-          as="h5"
+        <Header as="h2" inverted content="Authentication with Passport.js" />
+        {/* <Header
+          as="h4"
           inverted
           content="Node.js | Express | JavaScript | React | TypeScript | MongoDB | Mongoose | Passport (OAuth 2.0)"
-        />
+        /> */}
         <Button
           as={Link}
           to="/dashboard"

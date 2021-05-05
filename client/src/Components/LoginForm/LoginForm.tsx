@@ -47,20 +47,20 @@ const LoginForm = ({ formName, formDescription }: Props) => {
         <Typography variant="h5" component="h3">
           {formName}
         </Typography>
-        <Typography component="p" style={{ fontSize: 10, margin: 10 }}>
+        <Typography component="p" style={{ fontSize: 12, margin: 10 }}>
           {formDescription}
         </Typography>
 
         <form onSubmit={handleOnSubmit}>
           <TextField
-            label="Username"
-            placeholder="Enter your username"
+            label="Email"
+            placeholder="Enter your email here"
             name="username"
             defaultValue={loginCredentials.username}
             onChange={handleInput}
             id="margin-normal"
             className={classes.textField}
-            helperText="Enter your email"
+            helperText="Enter your Email"
             variant="filled"
           />
           <TextField
@@ -68,6 +68,7 @@ const LoginForm = ({ formName, formDescription }: Props) => {
             id="margin-normal"
             name="password"
             defaultValue={loginCredentials.password}
+            placeholder="Enter your email here"
             className={classes.textField}
             helperText="Enter your Password"
             variant="outlined"
@@ -85,7 +86,7 @@ const LoginForm = ({ formName, formDescription }: Props) => {
         <div
           style={{
             textAlign: "center",
-            marginTop: 25,
+            marginTop: 15,
           }}
         >
           <a href="/signup">Sign up for New Account!</a>

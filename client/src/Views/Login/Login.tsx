@@ -11,7 +11,7 @@ function Login() {
       style={{
         width: 450,
         margin: "150px auto",
-        backgroundColor: "#ccd0d1",
+        backgroundColor: "#d2d2d2",
         padding: 50,
         boxShadow:
           "0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)",
@@ -21,7 +21,7 @@ function Login() {
         {/* //! LoginForm Component */}
         <LoginForm
           formName="Login to your Account"
-          formDescription="IMPORTANT: Your email is your username."
+          formDescription="IMPORTANT: Your email is your username"
         />
       </div>
 

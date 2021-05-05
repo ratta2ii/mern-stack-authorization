@@ -1,3 +1,7 @@
+![Image of Paths](client/public/landing-page.png)
+#
+![Image of Paths](client/public/login-page.png)
+
 ## Register Users (TEXT)
 ##### _(Security: Level 1)_
 

@@ -1,6 +1,8 @@
 import React from "react";
+import useStyles from "./social.icon.styles";
 
 const GoogleAuth = () => {
+  const classes = useStyles();
   const handleSignInClick = () => {
     // Successful logins will store a cookie session in the client
     window.open("http://localhost:5000/auth/google", "_self");
@@ -13,14 +15,8 @@ const GoogleAuth = () => {
         alt="google Oauth sign-on button"
         width="300"
         onClick={handleSignInClick}
-        style={{
-          height: 38,  
-          marginTop: 30,
-          marginLeft: 25,
-          cursor: "pointer",
-          boxShadow:
-            "0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)",
-        }}
+        className={classes.imgStyles}
+        style={{ marginTop: 30 }}
       />
     </div>
   );

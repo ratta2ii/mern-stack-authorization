@@ -15,6 +15,7 @@ function NewUserForm(props: any) {
     _id: "",
     username: "",
     password: "",
+    confirmPassword: "",
   });
 
   const handleInput = (
@@ -26,15 +27,21 @@ function NewUserForm(props: any) {
 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
+    const passwordAuthorized =
+      loginCredentials.password === loginCredentials.confirmPassword;
+    if (passwordAuthorized) {
+      let newUser = await {
+        ...loginCredentials,
+        _id: uuid(),
+      };
+      await delete newUser[newUser.confirmPassword];
 
-    let newUser = {
-      ...loginCredentials,
-      _id: uuid(),
-    };
-
-    createUser(newUser).then((response) => {
-      history.push(`/dashboard/user/${newUser._id}`, { props: newUser });
-    });
+      createUser(newUser).then((response) => {
+        history.push(`/dashboard/user/${newUser._id}`, { props: newUser });
+      });
+    } else {
+      alert("Your passwords do not match! Please reenter a different password.");
+    }
   };
 
   return (
@@ -43,18 +50,18 @@ function NewUserForm(props: any) {
         <Typography variant="h5" component="h3">
           {props.formName}
         </Typography>
-        <Typography component="p" style={{ fontSize: 10, margin: 10 }}>
+        <Typography component="p" style={{ fontSize: 12, margin: 10 }}>
           {props.formDescription}
         </Typography>
 
         <form onSubmit={handleSubmit}>
           <TextField
-            label="Username"
+            label="Email"
             id="margin-normal"
             name="username"
             defaultValue={loginCredentials.username}
             className={classes.textField}
-            helperText="Enter a Username"
+            helperText="Enter your email"
             variant="filled"
             onChange={handleInput}
           />
@@ -64,7 +71,17 @@ function NewUserForm(props: any) {
             name="password"
             defaultValue={loginCredentials.password}
             className={classes.textField}
-            helperText="Choose a Password"
+            // helperText="Choose a Password"
+            variant="outlined"
+            onChange={handleInput}
+          />
+          <TextField
+            label="Confirm Password"
+            id="margin-normal"
+            name="confirmPassword"
+            className={classes.textField}
+            defaultValue={loginCredentials.confirmPassword}
+            // helperText="Enter a Password"
             variant="outlined"
             onChange={handleInput}
           />
@@ -80,7 +97,7 @@ function NewUserForm(props: any) {
         <div
           style={{
             textAlign: "center",
-            marginTop: 25,
+            marginTop: 15,
           }}
         >
           <a href="/login">Already have an Account? Login HERE</a>

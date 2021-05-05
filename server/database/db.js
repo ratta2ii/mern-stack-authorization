@@ -4,7 +4,7 @@ const findOrCreate = require("mongoose-findorcreate");
 const { userSchema } = require("./models");
 
 
-const mongoUri = "mongodb://localhost:27017/userDB";
+const mongoUri = process.env.MONGODB_CONNECTION_STRING;
 // Connect to database, create schema, and encrypt password
 mongoose.connect(mongoUri, {
     useNewUrlParser: true,

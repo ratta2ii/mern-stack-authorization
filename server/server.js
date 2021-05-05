@@ -21,8 +21,6 @@ app.use(cors({
   })
 );
 
-// Use for serving ejs pages
-// app.set("view engine", "ejs");
 // app.use(express.static("public"));
 
 // Cookies and Sessions (express-session)
