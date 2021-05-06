@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/mern-stack-authorization/static/css/main.b21f5c95.chunk.css",
-    "main.js": "/mern-stack-authorization/static/js/main.7a5187ac.chunk.js",
-    "main.js.map": "/mern-stack-authorization/static/js/main.7a5187ac.chunk.js.map",
+    "main.js": "/mern-stack-authorization/static/js/main.10da0c88.chunk.js",
+    "main.js.map": "/mern-stack-authorization/static/js/main.10da0c88.chunk.js.map",
     "runtime-main.js": "/mern-stack-authorization/static/js/runtime-main.59d3e635.js",
     "runtime-main.js.map": "/mern-stack-authorization/static/js/runtime-main.59d3e635.js.map",
     "static/css/2.5fd931f5.chunk.css": "/mern-stack-authorization/static/css/2.5fd931f5.chunk.css",
@@ -14,7 +14,7 @@
     "static/css/2.5fd931f5.chunk.css.map": "/mern-stack-authorization/static/css/2.5fd931f5.chunk.css.map",
     "static/css/main.b21f5c95.chunk.css.map": "/mern-stack-authorization/static/css/main.b21f5c95.chunk.css.map",
     "static/js/2.26ffd579.chunk.js.LICENSE.txt": "/mern-stack-authorization/static/js/2.26ffd579.chunk.js.LICENSE.txt",
-    "static/js/main.7a5187ac.chunk.js.LICENSE.txt": "/mern-stack-authorization/static/js/main.7a5187ac.chunk.js.LICENSE.txt",
+    "static/js/main.10da0c88.chunk.js.LICENSE.txt": "/mern-stack-authorization/static/js/main.10da0c88.chunk.js.LICENSE.txt",
     "static/media/semantic.min.css": "/mern-stack-authorization/static/media/outline-icons.ddae9b1b.woff",
     "static/media/facebook-social-sign-on.f71acf6a.png": "/mern-stack-authorization/static/media/facebook-social-sign-on.f71acf6a.png",
     "static/media/github-social-sign-on.c2ed0597.png": "/mern-stack-authorization/static/media/github-social-sign-on.c2ed0597.png",
@@ -25,6 +25,6 @@
     "static/css/2.5fd931f5.chunk.css",
     "static/js/2.26ffd579.chunk.js",
     "static/css/main.b21f5c95.chunk.css",
-    "static/js/main.7a5187ac.chunk.js"
+    "static/js/main.10da0c88.chunk.js"
   ]
 }
