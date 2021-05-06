@@ -1,5 +1,6 @@
 import React from "react";
 import useStyles from "./social.icon.styles";
+import GoogleIcon from "./../../../public/assets/google-social-sign-on.png";
 
 const GoogleAuth = () => {
   const classes = useStyles();
@@ -11,7 +12,7 @@ const GoogleAuth = () => {
   return (
     <div>
       <img
-        src="/assets/google-social-sign-on.png"
+        src={GoogleIcon}
         alt="google Oauth sign-on button"
         width="300"
         onClick={handleSignInClick}

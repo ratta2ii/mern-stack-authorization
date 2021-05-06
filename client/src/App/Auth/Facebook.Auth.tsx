@@ -1,5 +1,6 @@
 import React from "react";
 import useStyles from "./social.icon.styles";
+import FacebookIcon from "./../../../public/assets/facebook-social-sign-on.png";
 
 const FacebookAuth = () => {
   const classes = useStyles();
@@ -11,7 +12,7 @@ const FacebookAuth = () => {
   return (
     <div>
       <img
-        src="/assets/facebook-social-sign-on.png"
+        src={FacebookIcon}
         alt="facebook social media OAuth alternate sing-on"
         width="300"
         onClick={handleSignInClick}

@@ -3,6 +3,7 @@ import { Button, Container, Menu } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import { useStore } from "../Stores/store";
 import { observer } from "mobx-react-lite";
+import PassportIcon from "./../../../public/assets/passport-js-icon.png";
 
 const NavBar = () => {
   const { userStore } = useStore();
@@ -24,7 +25,7 @@ const NavBar = () => {
       <Container>
         <Menu.Item as={NavLink} to="/" exact header>
           <img
-            src="/assets/passport-js-icon.png"
+            src={PassportIcon}
             alt="logo"
             style={{ marginRight: 10 }}
           />

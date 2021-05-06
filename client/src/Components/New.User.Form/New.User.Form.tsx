@@ -56,7 +56,6 @@ function NewUserForm(props: any) {
                 <Typography component="p" style={{ fontSize: 12, margin: 10 }}>
                     {props.formDescription}
                 </Typography>
-
                 <form onSubmit={handleSubmit}>
                     <TextField
                         label="Email"

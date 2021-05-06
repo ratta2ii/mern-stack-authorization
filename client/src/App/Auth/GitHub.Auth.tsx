@@ -1,5 +1,6 @@
 import React from "react";
 import useStyles from "./social.icon.styles";
+import GitHubIcon from "./../../../public/assets/github-social-sign-on.png";
 
 const GitHubAuth = () => {
   const classes = useStyles();  
@@ -11,7 +12,7 @@ const GitHubAuth = () => {
   return (
     <div>
       <img
-        src="/assets/github-social-sign-on.png"
+        src={GitHubIcon}
         alt="google Oauth sign-on button"
         width="300"
         onClick={handleSignInClick}
