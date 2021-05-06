@@ -1,6 +1,6 @@
 import React from "react";
 import useStyles from "./social.icon.styles";
-import FacebookIcon from "./../../../public/assets/facebook-social-sign-on.png";
+import FacebookIcon from "./../../Images/facebook-social-sign-on.png";
 
 const FacebookAuth = () => {
   const classes = useStyles();

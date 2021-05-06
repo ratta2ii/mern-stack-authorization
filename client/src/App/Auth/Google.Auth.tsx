@@ -1,6 +1,6 @@
 import React from "react";
 import useStyles from "./social.icon.styles";
-import GoogleIcon from "./../../../public/assets/google-social-sign-on.png";
+import GoogleIcon from "./../../Images/google-social-sign-on.png";
 
 const GoogleAuth = () => {
   const classes = useStyles();

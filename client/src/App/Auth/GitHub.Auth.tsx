@@ -1,6 +1,6 @@
 import React from "react";
 import useStyles from "./social.icon.styles";
-import GitHubIcon from "./../../../public/assets/github-social-sign-on.png";
+import GitHubIcon from "./../../Images/github-social-sign-on.png";
 
 const GitHubAuth = () => {
   const classes = useStyles();  

@@ -3,7 +3,7 @@ import { Button, Container, Menu } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import { useStore } from "../Stores/store";
 import { observer } from "mobx-react-lite";
-import PassportIcon from "./../../../public/assets/passport-js-icon.png";
+import PassportIcon from "./../../Images/passport-js-icon.png";
 
 const NavBar = () => {
   const { userStore } = useStore();
