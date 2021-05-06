@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PassportIcon from "./../../Images/passport-js-icon.png";
 import { Container, Header, Segment, Image, Button } from "semantic-ui-react";
 
 const HomePage = () => {
@@ -9,18 +10,18 @@ const HomePage = () => {
         <Header as="h1" inverted>
           <Image
             size="massive"
-            src="/assets/passport-js-icon.png"
+            src={PassportIcon}
             alt="logo"
             style={{ marginBottom: 12 }}
           />
           MERN Stack
         </Header>
-        <Header as="h2" inverted content="Authentication with Passport.js" />
-        {/* <Header
+        {/* <Header as="h2" inverted content="Authentication with Passport.js" /> */}
+        <Header
           as="h4"
           inverted
-          content="Node.js | Express | JavaScript | React | TypeScript | MongoDB | Mongoose | Passport (OAuth 2.0)"
-        /> */}
+          content="MongoDB | Express | React | Node.js | JavaScript | TypeScript | Passport -OAuth 2.0"
+        />
         <Button
           as={Link}
           to="/dashboard"
