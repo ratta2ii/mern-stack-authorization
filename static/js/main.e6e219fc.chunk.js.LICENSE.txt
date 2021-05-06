@@ -1,0 +1,7 @@
+//! Do not miss this if you are using the location.key
+
+//! This must be included to observe changes within the store (works in conjunction with the HOC, "observer", in each component viewing or updating state)
+
+//! This will need to throw an error and let a user know to try again or go to login
+
+//! This will not work for when users enter info of already existing accounts. 
