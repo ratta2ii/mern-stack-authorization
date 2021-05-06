@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import UserStore from "./userStore";
+import UserStore from "./user.store";
 
 interface Store {
     userStore: UserStore

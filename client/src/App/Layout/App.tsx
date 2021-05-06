@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 import { Route, useLocation } from "react-router-dom";
 import HomePage from "../../Views/Homepage/Homepage";
 import Dashboard from "../../Views/Dashboard/Dashboard";
-import SignupNewUser from "../../Views/SignupNewUser/SignupNewUser";
+import SignupNewUser from "../../Views/Signup.New.User/Signup.New.User";
 import Login from "../../Views/Login/Login";
 import AuthUserDashBoard from "../../Views/Auth.User.Dashboard/Auth.User.Dashboard";
 

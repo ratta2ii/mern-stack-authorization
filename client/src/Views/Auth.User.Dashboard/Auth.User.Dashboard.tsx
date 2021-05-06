@@ -1,8 +1,11 @@
 import { observer } from "mobx-react-lite";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import LoadingComponent from "../../App/Layout/LoadingComponent";
+import { Link } from "react-router-dom";
+import { Button } from "semantic-ui-react";
+import LoadingComponent from "../../App/Layout/Loading.Component";
 import { useStore } from "../../App/Stores/store";
+import AddPasswordForm from "../../Components/Add.Password.Form/Add.Password.Form";
 
 const AuthUserDashBoard = (props: any) => {
     const { userStore } = useStore();
@@ -14,8 +17,14 @@ const AuthUserDashBoard = (props: any) => {
     } = userStore;
     const { id } = useParams<{ id: string }>();
 
+    const [ displayPasswordForm, setDisplayPasswordForm ] = useState(true);
+
     useEffect(() => {
-        loadUserById(id);
+        loadUserById(id).then(res => {
+            if (res?.localAccount) {
+                setDisplayPasswordForm(false);
+            }
+        });
     }, [id, loadUserById]);
 
     // //* Loading Indicator
@@ -26,16 +35,25 @@ const AuthUserDashBoard = (props: any) => {
         currentUser &&
         isAuthenticated &&
         currentUser.hasOwnProperty("accounts") &&
-        !currentUser.localAccount
+        !currentUser.localAccount &&
+        displayPasswordForm
     ) {
         return (
-            <div>
-                <h1>
-                    You are going to need to enter a new password for your existing
-                    account. This will enable login with username and password, as well as
-                    through the social provider of your choosing.
-                </h1>
-                <h1>And I will have to implement this for you!</h1>
+            <div
+                style={{
+                    width: 450,
+                    margin: "150px auto",
+                    backgroundColor: "#d2d2d2",
+                    padding: 50,
+                    boxShadow:
+                        "0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)",
+                }}
+            >
+                <AddPasswordForm
+                    setDisplayPasswordForm={setDisplayPasswordForm}
+                    formName="Choose a password for this account:"
+                    formDescription="IMPORTANT: Choosing a password will enable alternative authentication methods using your email and password -in addition to the 3rd party registration (authentication) you are currently using."
+                />
             </div>
         );
     }
@@ -50,6 +68,15 @@ const AuthUserDashBoard = (props: any) => {
                     <li>
                         <h3>USERNAME: {currentUser.username}</h3>
                     </li>
+                    <Button
+                        as={Link}
+                        to="/dashboard"
+                        size="huge"
+                        inverted
+                        style={{ marginTop: 30 }}
+                    >
+                        Go to Public Dashboard
+                    </Button>
                 </ul>
             )}
         </div>

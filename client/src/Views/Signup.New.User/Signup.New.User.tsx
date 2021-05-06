@@ -1,8 +1,8 @@
 import React from "react";
-import NewUserForm from "../../Components/NewUserForm/NewUserForm";
-import GoogleAuth from "../../App/Auth/GoogleAuth";
-import FacebookAuth from "../../App/Auth/FacebookAuth";
-import GitHubAuth from "../../App/Auth/GitHubAuth";
+import NewUserForm from "../../Components/New.User.Form/New.User.Form";
+import GoogleAuth from "../../App/Auth/Google.Auth";
+import FacebookAuth from "../../App/Auth/Facebook.Auth";
+import GitHubAuth from "../../App/Auth/GitHub.Auth";
 
 function SignupNewUser() {
   return (

@@ -1,9 +1,9 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
-import LoginForm from "../../Components/LoginForm/LoginForm";
-import GoogleAuth from "../../App/Auth/GoogleAuth";
-import FacebookAuth from "../../App/Auth/FacebookAuth";
-import GitHubAuth from "../../App/Auth/GitHubAuth";
+import LoginForm from "../../Components/Login.Form/Login.Form";
+import GoogleAuth from "../../App/Auth/Google.Auth";
+import FacebookAuth from "../../App/Auth/Facebook.Auth";
+import GitHubAuth from "../../App/Auth/GitHub.Auth";
 
 function Login() {
   return (

@@ -8,6 +8,7 @@ export default class userStore {
     loadingInitial = true;
     editMode: boolean = false;
     isAuthenticated: boolean = false;
+    errorMessage: string = "";
 
     //! This must be included to observe changes within the store (works in conjunction with the HOC, "observer", in each component viewing or updating state)
     constructor() {
@@ -84,10 +85,10 @@ export default class userStore {
     createUser = async (user: User) => {
         this.setLoading(true);
         try {
-            await agent.Users.create(user);
-            runInAction(() => {
-                this.currentUser = user;
-            });
+            user = await agent.Users.create(user);
+            if (user.username) {
+                this.setUser(user);
+            }
             this.setLoading(false);
         } catch (error) {
             console.log(error);

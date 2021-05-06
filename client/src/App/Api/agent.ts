@@ -33,8 +33,7 @@ const request = {
 const Users = {
     find: (id: string) => request.get<User>(`userdata/${id}`),
     details: (loginCredentials: any) => request.post<any>(`/login`, loginCredentials),
-    create: (user: User) => request.post<void>('/users/register', user),
-    update: (user: User) => request.put<void>(`/users/${user._id}`, user),
+    create: (user: User) => request.post<any>('/users/register', user),
     delete: (id: string) => request.delete<void>(`/users/${id}`),
     logout: () => request.get<any>(`/logout`),
 }

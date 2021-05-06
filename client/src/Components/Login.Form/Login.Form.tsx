@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import { useHistory } from "react-router";
 import { Button, TextField, Paper, Typography } from "@material-ui/core";
-import useStyles from "./LoginFormStyles";
+import useStyles from "./Login.Form.Styles";
 import { useStore } from "../../App/Stores/store";
 
 interface Props {
