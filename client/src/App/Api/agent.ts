@@ -8,7 +8,7 @@ const sleep = (delay: number) => {
     })
 }
 
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = "https://mern-stack-authentication.herokuapp.com";
 
 // resolve sleep
 axios.interceptors.response.use(async response => {
