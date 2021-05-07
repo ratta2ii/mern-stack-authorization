@@ -1,7 +1,7 @@
 {
   "name": "secrets-authentication",
   "version": "1.0.0",
-  "description": "",
+  "description": "MERN stack application that demostrates authentication and authorization using Passport.js",
   "main": "server.js",
   "repository": {
     "type": "git",
@@ -11,8 +11,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Trevor Mackin",
   "license": "ISC",
+  "engines": {
+    "node": "14.16.1"
+  },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "chalk": "^4.1.1",
