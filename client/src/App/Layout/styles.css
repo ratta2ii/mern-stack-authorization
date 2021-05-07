@@ -31,6 +31,10 @@ body {
     #4b61b9 85%
   ) !important;
   height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 101;
 }
 
 .masthead .ui.menu .ui.button,

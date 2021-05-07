@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import { Button, TextField, Paper, Typography } from "@material-ui/core";
 import useStyles from "./Login.Form.Styles";
 import { useStore } from "../../App/Stores/store";
+import { Link } from "react-router-dom";
 
 interface Props {
   formName: string;
@@ -89,7 +90,7 @@ const LoginForm = ({ formName, formDescription }: Props) => {
             marginTop: 15,
           }}
         >
-          <a href="/signup">Sign up for New Account!</a>
+          <Link to="/signup">Need an account? Signup HERE</Link>
         </div>
       </Paper>
     </div>

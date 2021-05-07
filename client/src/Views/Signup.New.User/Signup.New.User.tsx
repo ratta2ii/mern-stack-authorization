@@ -1,10 +1,11 @@
 import React from "react";
+import { observer } from "mobx-react-lite";
 import NewUserForm from "../../Components/New.User.Form/New.User.Form";
 import GoogleAuth from "../../App/Auth/Google.Auth";
 import FacebookAuth from "../../App/Auth/Facebook.Auth";
 import GitHubAuth from "../../App/Auth/GitHub.Auth";
 
-function SignupNewUser() {
+const SignupNewUser = () => {
   return (
     <div
       style={{
@@ -40,4 +41,4 @@ function SignupNewUser() {
   );
 }
 
-export default SignupNewUser;
+export default observer(SignupNewUser);

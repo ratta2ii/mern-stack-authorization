@@ -1,11 +1,16 @@
 import React, { ChangeEvent, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import { useStore } from "../../App/Stores/store";
 import { Button, TextField, Paper, Typography } from "@material-ui/core";
 import useStyles from "./New.User.Form.Styles";
 
-function NewUserForm(props: any) {
+interface Props {
+  formName: string;
+  formDescription: string;
+}
+
+const NewUserForm = ({ formName, formDescription }: Props) => {
     const classes = useStyles();
     const history = useHistory();
     const { userStore } = useStore();
@@ -51,10 +56,10 @@ function NewUserForm(props: any) {
             {currentUser}
             <Paper className={classes.root}>
                 <Typography variant="h5" component="h3">
-                    {props.formName}
+                    {formName}
                 </Typography>
                 <Typography component="p" style={{ fontSize: 12, margin: 10 }}>
-                    {props.formDescription}
+                    {formDescription}
                 </Typography>
                 <form onSubmit={handleSubmit}>
                     <TextField
@@ -102,7 +107,7 @@ function NewUserForm(props: any) {
                         marginTop: 15,
                     }}
                 >
-                    <a href="/login">Already have an Account? Login HERE</a>
+                    <Link to="/login">Already have an Account? Login HERE</Link>
                 </div>
             </Paper>
         </div>

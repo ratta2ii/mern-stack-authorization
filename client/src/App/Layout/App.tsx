@@ -1,9 +1,8 @@
 import React, { Fragment } from "react";
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { Container } from "semantic-ui-react";
-import NavBar from "./NavBar";
 import { observer } from "mobx-react-lite";
-import { Route } from "react-router-dom";
+import NavBar from "./NavBar";
 import HomePage from "../../Views/Homepage/Homepage";
 import Dashboard from "../../Views/Dashboard/Dashboard";
 import SignupNewUser from "../../Views/Signup.New.User/Signup.New.User";
@@ -16,27 +15,20 @@ function App() {
 
   return (
     <Fragment>
-      <Route exact path="/" component={HomePage} />
-      <Route
-        path={"/(.+)"}
-        render={() => (
-          <Fragment>
-            <NavBar />
-            <Container style={{ marginTop: "7em" }}>
-              <Switch>
-                <Route exact path={["/dashboard"]} component={Dashboard} />
-                <Route path="/login" component={Login} />
-                <Route path="/signup" component={SignupNewUser} />
-                <Route
-                  exact
-                  path="/dashboard/user/:id"
-                  component={AuthUserDashBoard}
-                />
-              </Switch>
-            </Container>
-          </Fragment>
-        )}
-      />
+      <NavBar />
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Container style={{ marginTop: "7em" }}>
+          <Route exact path={["/dashboard"]} component={Dashboard} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={SignupNewUser} />
+          <Route
+            exact
+            path="/dashboard/user/:id"
+            component={AuthUserDashBoard}
+          />
+        </Container>
+      </Switch>
     </Fragment>
   );
 }
@@ -88,3 +80,30 @@ export default observer(App);
 // }
 
 // export default observer(App);
+
+// return (
+//   <Fragment>
+//     <Switch>
+//       <Route exact path="/" component={HomePage} />
+//       <Route
+//         path={"/(.+)"}
+//         render={() => (
+//           <Fragment>
+//             <NavBar />
+//             <Container style={{ marginTop: "7em" }}>
+//               <Route exact path={["/dashboard"]} component={Dashboard} />
+//               <Route exact path="/login" component={Login} />
+//               <Route exact path="/signup" component={SignupNewUser} />
+//               <Route
+//                 exact
+//                 path="/dashboard/user/:id"
+//                 component={AuthUserDashBoard}
+//               />
+//             </Container>
+//           </Fragment>
+//         )}
+//       />
+//     </Switch>
+//   </Fragment>
+// );
+// }
