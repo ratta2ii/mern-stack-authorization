@@ -70,9 +70,9 @@ router.get("/auth/google",
 );
 
 router.get("/auth/google/redirect",
-    passport.authenticate("google", { failureRedirect: "https://ratta2ii.github.io/mern-stack-authorization/login/failed" }),
+    passport.authenticate("google", { failureRedirect: "https://mern-stack-authentication.herokuapp.com/login/failed" }),
     function (req, res) {
-        const myURL = new URL(`https://ratta2ii.github.io/mern-stack-authorization/dashboard/user/${req.user._id}`)
+        const myURL = new URL(`https://mern-stack-authentication.herokuapp.com/dashboard/user/${req.user._id}`)
         res.redirect(myURL);
     }
 );
@@ -84,9 +84,9 @@ router.get("/auth/facebook",
 
 
 router.get("/auth/facebook/redirect",
-    passport.authenticate("facebook", { failureRedirect: "https://ratta2ii.github.io/mern-stack-authorization/login/failed" }),
+    passport.authenticate("facebook", { failureRedirect: "https://mern-stack-authentication.herokuapp.com/login/failed" }),
     function (req, res) {
-        const myURL = new URL(`https://ratta2ii.github.io/mern-stack-authorization/dashboard/user/${req.user._id}`)
+        const myURL = new URL(`https://mern-stack-authentication.herokuapp.com/dashboard/user/${req.user._id}`)
         res.redirect(myURL);
     }
 );

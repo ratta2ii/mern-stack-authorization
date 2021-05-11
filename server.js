@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const _ = require("lodash");
+const path = require('path');
 var cors = require("cors");
 const app = express();
 const session = require("express-session");
@@ -14,14 +15,32 @@ const { User } = require("./database/db");
 // --------------------------
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(cors({
-    origin: "https://ratta2ii.github.io/mern-stack-authorization", // allow to server to accept request from different origin
+    // allow the server to accept request from different origin
+    origin: [
+      "https://ratta2ii.github.io",
+      "https://ratta2ii.github.io/",
+      "http://localhost:3000",
+      "https://localhost:3000",
+      "https://cors-anywhere.herokuapp.com"
+    ],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true // allow session cookie from browser to pass through
+    // allow session cookie from browser to pass through
+    credentials: true 
   })
 );
 
 // app.use(express.static("public"));
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static("client/build"));
+}
+
+console.log(path.join(__dirname, "client/build", "index.html"));
+
+app.get("*", (request, response) => {
+	response.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
 
 // Cookies and Sessions (express-session)
 app.use(session({

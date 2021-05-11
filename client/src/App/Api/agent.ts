@@ -9,6 +9,7 @@ const sleep = (delay: number) => {
 }
 
 axios.defaults.baseURL = "https://mern-stack-authentication.herokuapp.com";
+// axios.defaults.baseURL = "https://cors-anywhere.herokuapp.com/https://mern-stack-authentication.herokuapp.com";
 
 // resolve sleep
 axios.interceptors.response.use(async response => {
@@ -19,7 +20,7 @@ axios.interceptors.response.use(async response => {
         console.log("interceptor error: ", error);
         return await Promise.reject(error);
     }
-})
+});
 
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
