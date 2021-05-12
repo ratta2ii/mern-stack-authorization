@@ -51,8 +51,7 @@ app.set("trust proxy", 1);
 ! To enable hosting React app along side server, serve React build folder as static files
 ? Currently hosting REACT APP completely seperate on gh-pages
 */
-// if (process.env.NODE_ENV === "production") {
-if (true) {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
 }
 
