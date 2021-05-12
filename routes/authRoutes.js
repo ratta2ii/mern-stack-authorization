@@ -62,10 +62,7 @@ router.post("/login", function (req, res) {
 //! Google OAuth Routes
 router.get(
   "/auth/google",
-  passport.authenticate("google", { scope: ["profile", "email"] }),
-  function () {
-    console.log("Made it in to auth/google");
-  }
+  passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
 router.get(
@@ -75,8 +72,8 @@ router.get(
       "https://ratta2ii.github.io/mern-stack-authorization/login/failed",
   }),
   function (req, res) {
-    const myURL = "https://ratta2ii.github.io/mern-stack-authorization";
-    // const myURL = `https://ratta2ii.github.io/mern-stack-authorization/dashboard/user/${req.user._id}`;
+    // const myURL = "https://ratta2ii.github.io/mern-stack-authorization";
+    const myURL = `https://ratta2ii.github.io/mern-stack-authorization/dashboard/user/${req.user._id}`;
     res.redirect(myURL);
   }
 );
