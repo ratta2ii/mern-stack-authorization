@@ -8,8 +8,7 @@ const sleep = (delay: number) => {
     })
 }
 
-axios.defaults.baseURL = "https://mern-stack-authentication.herokuapp.com";
-// axios.defaults.baseURL = "https://cors-anywhere.herokuapp.com/https://mern-stack-authentication.herokuapp.com";
+axios.defaults.baseURL = "https://mern-stack-authentication.herokuapp.com/api";
 
 // resolve sleep
 axios.interceptors.response.use(async response => {
