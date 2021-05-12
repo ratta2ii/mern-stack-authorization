@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const _ = require("lodash");
-const path = require('path');
+const path = require("path");
 var cors = require("cors");
 const app = express();
 const session = require("express-session");
@@ -10,15 +10,12 @@ require("./authorization/passportAuth");
 var routes = require(__dirname + "/routes/authRoutes");
 const { User } = require("./database/db");
 
-
 //? Express v4.16.0 and higher no longer use body-parser
 // --------------------------
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-/*
-? We can add some headers to our API server's response that tell the browser that it's OK receiving requests from the domain of our Heroku app.
-*/
+// ? We can add some headers to our API server's response that tell the browser that it's OK to communicate with (req, res) the domain of our Heroku app. Note: The current Express server is serving both API and React app, but I left this here to revisit later.
 app.use((req, res, next) => {
   res.header(
     "Access-Control-Allow-Origin",
@@ -31,59 +28,52 @@ app.use((req, res, next) => {
   next();
 });
 
+//? CORS is enabled for either developement, or when the API and client are hosted on 2 seperate platforms. Note: The current Express server is serving both API and React app, but I left this here to revisit later.
 var corsOptions = {
-  // allow the server to accept request from different origin
-  // origin: [
-  //   "https://ratta2ii.github.io",
-  //   "http://localhost:3000",
-  // ],
   origin: "https://mern-stack-authentication.herokuapp.com",
   optionsSuccessStatus: 200, // For legacy browser support
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  // allow session cookie from browser to pass through
-  credentials: true 
-}
+  credentials: true, // Allow session cookie from browser to pass through
+};
 
 app.use(cors(corsOptions));
 app.set("trust proxy", 1);
 
 // Cookies and Sessions (express-session)
-app.use(session({
+app.use(
+  session({
     secret: process.env.APP_SECRET,
     resave: false,
-    saveUninitialized: false
-}));
+    saveUninitialized: false,
+  })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
-/*
-! IMPORTANT: routes must follow passport initialize() and session() in order to
-! avoid the out-of-order middleware hell that express makes it so easy to enter
-*/
+
+//! IMPORTANT: routes must follow passport initialize() and session() in order to avoid the out-of-order middleware hell that express makes it so easy to enter. Also, serving the static files and routes could be inverse, with routes preceeding the static files, but it not working in this particular case -so I left them alone here.
 app.use("/api", routes);
 
 app.get("/test", function (req, res) {
   res.send("Hello world");
 });
 
-/*
-! To enable hosting React app along side server, serve React build folder as static files
-? Currently hosting REACT APP completely seperate on gh-pages
-*/
+// ! To enable hosting React app along side server, serve React build folder as static files
+// ? Currently hosting REACT APP completely seperate on gh-pages
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
 }
 
 app.get("*", (request, response) => {
-	response.sendFile(path.join(__dirname, "client/build", "index.html"));
+  response.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
 
 // Add port to .env file at a later point
 let port = process.env.PORT;
 if (port == null || port == "") {
-    port = 5000;
+  port = 5000;
 }
 
 app.listen(port, function () {
-    console.log(`Server is running on PORT: ${port}`);
+  console.log(`Server is running on PORT: ${port}`);
 });
