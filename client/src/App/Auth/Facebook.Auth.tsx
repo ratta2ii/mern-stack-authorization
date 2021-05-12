@@ -6,7 +6,7 @@ const FacebookAuth = () => {
   const classes = useStyles();
   const handleSignInClick = () => {
     // Successful logins will store a cookie session in the client
-    window.open("https://mern-stack-authentication.herokuapp.com/api/auth/facebook", "_self");
+    window.open("/api/auth/facebook", "_self");
   };
 
   return (

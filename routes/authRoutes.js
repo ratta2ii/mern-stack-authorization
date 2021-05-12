@@ -69,7 +69,7 @@ router.get(
   "/auth/google/redirect",
   passport.authenticate("google", {
     failureRedirect:
-      "https://mern-stack-authentication.herokuapp.com/login/failed",
+      "https://mern-stack-authentication.herokuapp.com/login",
   }),
   function (req, res) {
     const myURL = `https://mern-stack-authentication.herokuapp.com/dashboard/user/${req.user._id}`;
@@ -91,6 +91,7 @@ router.get(
   }),
   function (req, res) {
     const myURL = `https://mern-stack-authentication.herokuapp.com/dashboard/user/${req.user._id}`;
+    res.redirect(myURL);
   }
 );
 
