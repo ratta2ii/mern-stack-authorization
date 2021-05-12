@@ -18,10 +18,11 @@ app.use(express.urlencoded({ extended: true }));
 
 /*
 ? We can add some headers to our API server's response that tell the browser that it's OK receiving requests from the domain of our Heroku app.
+*/
 app.use((req, res, next) => {
   res.header(
     "Access-Control-Allow-Origin",
-    "http://<YOUR-SERVER-APP-NAME>.herokuapp.com"
+    "https://mern-stack-authentication.herokuapp.com"
   );
   res.header(
     "Access-Control-Allow-Headers",
@@ -29,7 +30,6 @@ app.use((req, res, next) => {
   );
   next();
 });
-*/
 
 var corsOptions = {
   // allow the server to accept request from different origin
@@ -74,11 +74,11 @@ app.use(passport.session());
 ! IMPORTANT: routes must follow passport initialize() and session() in order to
 ! avoid the out-of-order middleware hell that express makes it so easy to enter
 */
-// app.use("/", routes);
+app.use("/api", routes);
 
-// app.get("/test", function (req, res) {
-//   res.send("Hello world");
-// });
+app.get("/test", function (req, res) {
+  res.send("Hello world");
+});
 
 // Add port to .env file at a later point
 let port = process.env.PORT;
