@@ -55,11 +55,10 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
-/*
+
 app.get("*", (request, response) => {
 	response.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
-*/
 
 // Cookies and Sessions (express-session)
 app.use(session({
