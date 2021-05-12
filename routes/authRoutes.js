@@ -75,7 +75,8 @@ router.get(
       "https://ratta2ii.github.io/mern-stack-authorization/login/failed",
   }),
   function (req, res) {
-    const myURL = `https://ratta2ii.github.io/mern-stack-authorization/dashboard/user/${req.user._id}`;
+    const myURL = "https://ratta2ii.github.io/mern-stack-authorization";
+    // const myURL = `https://ratta2ii.github.io/mern-stack-authorization/dashboard/user/${req.user._id}`;
     res.redirect(myURL);
   }
 );
@@ -93,8 +94,8 @@ router.get(
       "https://ratta2ii.github.io/mern-stack-authorization/login/failed",
   }),
   function (req, res) {
-    const myURL = `https://ratta2ii.github.io/mern-stack-authorization/dashboard/user/${req.user._id}`;
-    res.redirect(myURL);
+    const myURL = "https://ratta2ii.github.io/mern-stack-authorization";
+    // const myURL = `https://ratta2ii.github.io/mern-stack-authorization/dashboard/user/${req.user._id}`;
   }
 );
 

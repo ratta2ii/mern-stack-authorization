@@ -35,6 +35,10 @@ function App() {
 
 export default observer(App);
 
+{/* <Route exact path="/">
+  {loggedIn ? <Redirect to="/dashboard" /> : <PublicHomePage />}
+</Route> */}
+
 // import React, { Fragment } from "react";
 // import { Container } from "semantic-ui-react";
 // import NavBar from "./NavBar";
