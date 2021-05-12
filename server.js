@@ -53,7 +53,7 @@ app.set("trust proxy", 1);
 */
 // if (process.env.NODE_ENV === "production") {
 if (true) {
-  app.use(express.static(path.join(__dirname, "client/build", "index.html")));
+  app.use(express.static(path.join(__dirname, "client/build")));
 }
 
 app.get("*", (request, response) => {
