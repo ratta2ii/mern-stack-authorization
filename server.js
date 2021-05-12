@@ -51,12 +51,13 @@ app.set("trust proxy", 1);
 ? Currently hosting REACT APP completely seperate on gh-pages
 */
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static(path.join(__dirname, "client/build", "index.html")));
 }
 
+console.log(path.join(__dirname, "client/build", "index.html"));
+console.log(process.env.NODE_ENV === "production");
 
-
-app.get("/", (request, response) => {
+app.get("*", (request, response) => {
 	response.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
 
