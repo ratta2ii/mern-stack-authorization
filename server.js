@@ -47,18 +47,6 @@ var corsOptions = {
 app.use(cors(corsOptions));
 app.set("trust proxy", 1);
 
-/*
-! To enable hosting React app along side server, serve React build folder as static files
-? Currently hosting REACT APP completely seperate on gh-pages
-*/
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")));
-}
-
-app.get("*", (request, response) => {
-	response.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
-
 // Cookies and Sessions (express-session)
 app.use(session({
     secret: process.env.APP_SECRET,
@@ -76,6 +64,18 @@ app.use("/api", routes);
 
 app.get("/test", function (req, res) {
   res.send("Hello world");
+});
+
+/*
+! To enable hosting React app along side server, serve React build folder as static files
+? Currently hosting REACT APP completely seperate on gh-pages
+*/
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+}
+
+app.get("*", (request, response) => {
+	response.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
 
 // Add port to .env file at a later point
