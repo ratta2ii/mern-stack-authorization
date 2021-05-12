@@ -10,7 +10,7 @@ import App from './App/Layout/App';
 
 ReactDOM.render(
     <StoreContext.Provider value={store}>
-        <BrowserRouter>
+        <BrowserRouter basename="/">
         {/* <BrowserRouter basename={process.env.PUBLIC_URL}> */}
             <App />
         </BrowserRouter>

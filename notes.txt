@@ -113,6 +113,10 @@ function createNewAccountHelper(user, newAccountObj) {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
   },
+
+
+  CLIENT .env
+  PUBLIC_URL=/mern-stack-authorization
 */
 
 //! strategies.js -the entire module- before optimizing with DRY principles (END)

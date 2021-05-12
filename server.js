@@ -33,10 +33,11 @@ app.use((req, res, next) => {
 
 var corsOptions = {
   // allow the server to accept request from different origin
-  origin: [
-    "https://ratta2ii.github.io",
-    "http://localhost:3000",
-  ],
+  // origin: [
+  //   "https://ratta2ii.github.io",
+  //   "http://localhost:3000",
+  // ],
+  origin: "https://mern-stack-authentication.herokuapp.com",
   optionsSuccessStatus: 200, // For legacy browser support
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   // allow session cookie from browser to pass through
