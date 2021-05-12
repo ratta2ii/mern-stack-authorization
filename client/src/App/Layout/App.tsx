@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
 import { Container } from "semantic-ui-react";
 import { observer } from "mobx-react-lite";
 import NavBar from "./NavBar";
@@ -9,9 +9,11 @@ import SignupNewUser from "../../Views/Signup.New.User/Signup.New.User";
 import Login from "../../Views/Login/Login";
 import AuthUserDashBoard from "../../Views/Auth.User.Dashboard/Auth.User.Dashboard";
 
-function App() {
+function App(props: any) {
   //! Do not miss this if you are using the location.key
-  // const location = useLocation();
+  const location = useLocation();
+
+  console.log({PROPS: props, LOCATION: location});
 
   return (
     <Fragment>

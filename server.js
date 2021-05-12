@@ -16,27 +16,50 @@ const { User } = require("./database/db");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors({
-    // allow the server to accept request from different origin
-    origin: [
-      "https://ratta2ii.github.io",
-      "http://localhost:3000",
-    ],
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    // allow session cookie from browser to pass through
-    credentials: true 
-  })
-);
+/*
+? We can add some headers to our API server's response that tell the browser that it's OK receiving requests from the domain of our Heroku app.
+app.use((req, res, next) => {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "http://<YOUR-SERVER-APP-NAME>.herokuapp.com"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+*/
 
+var corsOptions = {
+  // allow the server to accept request from different origin
+  origin: [
+    "https://ratta2ii.github.io",
+    "http://localhost:3000",
+  ],
+  optionsSuccessStatus: 200, // For legacy browser support
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  // allow session cookie from browser to pass through
+  credentials: true 
+}
+
+app.use(cors(corsOptions));
 app.set("trust proxy", 1);
 
-// if (process.env.NODE_ENV === "production") {
-// 	app.use(express.static("client/build"));
-// }
+/*
+! To enable hosting React app along side server, serve React build folder as static files
+? Currently hosting REACT APP completely seperate on gh-pages
+*/
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
-// app.get("*", (request, response) => {
-// 	response.sendFile(path.join(__dirname, "client/build", "index.html"));
-// });
+
+/*
+app.get("*", (request, response) => {
+	response.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
+*/
 
 // Cookies and Sessions (express-session)
 app.use(session({
@@ -51,11 +74,11 @@ app.use(passport.session());
 ! IMPORTANT: routes must follow passport initialize() and session() in order to
 ! avoid the out-of-order middleware hell that express makes it so easy to enter
 */
-app.use("/", routes);
+// app.use("/", routes);
 
-app.get("/test", function (req, res) {
-  res.send("Hello world");
-});
+// app.get("/test", function (req, res) {
+//   res.send("Hello world");
+// });
 
 // Add port to .env file at a later point
 let port = process.env.PORT;
