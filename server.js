@@ -20,10 +20,7 @@ app.use(cors({
     // allow the server to accept request from different origin
     origin: [
       "https://ratta2ii.github.io",
-      "https://ratta2ii.github.io/",
       "http://localhost:3000",
-      "https://localhost:3000",
-      "https://cors-anywhere.herokuapp.com"
     ],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     // allow session cookie from browser to pass through
@@ -31,16 +28,15 @@ app.use(cors({
   })
 );
 
-// app.use(express.static("public"));
-if (process.env.NODE_ENV === "production") {
-	app.use(express.static("client/build"));
-}
+app.set("trust proxy", 1);
 
-console.log(path.join(__dirname, "client/build", "index.html"));
+// if (process.env.NODE_ENV === "production") {
+// 	app.use(express.static("client/build"));
+// }
 
-app.get("*", (request, response) => {
-	response.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
+// app.get("*", (request, response) => {
+// 	response.sendFile(path.join(__dirname, "client/build", "index.html"));
+// });
 
 // Cookies and Sessions (express-session)
 app.use(session({
@@ -56,6 +52,10 @@ app.use(passport.session());
 ! avoid the out-of-order middleware hell that express makes it so easy to enter
 */
 app.use("/", routes);
+
+app.get("/test", function (req, res) {
+  res.send("Hello world");
+});
 
 // Add port to .env file at a later point
 let port = process.env.PORT;

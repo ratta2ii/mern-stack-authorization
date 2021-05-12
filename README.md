@@ -31,7 +31,7 @@ _An "Auth Code" can be likened to an admit one ticket, whereas an "Access Token"
 3. From sidebar go to Credentials > OAuth Consent Screen to configure
 4. Configure settings (Revisit after site is hosted on a Domain)
 5. Select "Create Credentials" and choose OAuth client ID
-6. Choose authorized URI and redirect URI (Redirect ex: http://localhost:5000/auth/google/redirect) A redirect link is where you will send a user once the OAuth (google in our case here) has authenticated the user.
+6. Choose authorized URI and redirect URI (Redirect ex: https://mern-stack-authentication.herokuapp.com/auth/google/redirect) A redirect link is where you will send a user once the OAuth (google in our case here) has authenticated the user.
 7. Save the newly generated CLIENT_ID and CLIENT_SECRET into the .env file.
 8. Implement in code using passport documentation.
 

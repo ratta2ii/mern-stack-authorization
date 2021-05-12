@@ -66,12 +66,16 @@ router.post("/login",
 
 //! Google OAuth Routes
 router.get("/auth/google",
-    passport.authenticate("google", { scope: ["profile", "email"] })
-);
-
-router.get("/auth/google/redirect",
+    passport.authenticate("google", { scope: ["profile", "email"] }),
+    function() {
+      console.log("Made it in to auth/google");
+    }
+    );
+    
+    router.get("/auth/google/redirect",
     passport.authenticate("google", { failureRedirect: "https://mern-stack-authentication.herokuapp.com/login/failed" }),
     function (req, res) {
+      console.log("Made it in to auth/google/redirect");
         const myURL = new URL(`https://mern-stack-authentication.herokuapp.com/dashboard/user/${req.user._id}`)
         res.redirect(myURL);
     }
