@@ -69,11 +69,11 @@ router.get(
   "/auth/google/redirect",
   passport.authenticate("google", {
     failureRedirect:
-      "https://mern-stack-authentication.herologinkuapp.com/login/failed",
+      "https://mern-stack-authentication.herokuapp.com/login/failed",
   }),
   function (req, res) {
-    // const myURL = "https://mern-stack-authentication.herologinkuapp.com";
-    const myURL = `https://mern-stack-authentication.herologinkuapp.com/dashboard/user/${req.user._id}`;
+    // const myURL = "https://mern-stack-authentication.herokuapp.com";
+    const myURL = `https://mern-stack-authentication.herokuapp.com/dashboard/user/${req.user._id}`;
     res.redirect(myURL);
   }
 );
@@ -88,11 +88,11 @@ router.get(
   "/auth/facebook/redirect",
   passport.authenticate("facebook", {
     failureRedirect:
-      "https://mern-stack-authentication.herologinkuapp.com/login/failed",
+      "https://mern-stack-authentication.herokuapp.com/login/failed",
   }),
   function (req, res) {
-    const myURL = "https://mern-stack-authentication.herologinkuapp.com";
-    // const myURL = `https://mern-stack-authentication.herologinkuapp.com/dashboard/user/${req.user._id}`;
+    const myURL = "https://mern-stack-authentication.herokuapp.com";
+    // const myURL = `https://mern-stack-authentication.herokuapp.com/dashboard/user/${req.user._id}`;
   }
 );
 
