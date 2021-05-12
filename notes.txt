@@ -101,6 +101,18 @@ function createNewAccountHelper(user, newAccountObj) {
       //   }
       // }(window.location))
     </script>
+
+    "homepage": "http://ratta2ii.github.io/mern-stack-authorization",
+
+    "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "dev": "concurrently \"react-scripts start\" \"nodemon ./../server/server.js\"",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+  },
 */
 
 //! strategies.js -the entire module- before optimizing with DRY principles (END)
