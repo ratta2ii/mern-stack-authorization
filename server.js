@@ -54,9 +54,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build", "index.html")));
 }
 
-console.log(path.join(__dirname, "client/build", "index.html"));
-console.log(process.env.NODE_ENV === "production");
-
 app.get("*", (request, response) => {
 	response.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
