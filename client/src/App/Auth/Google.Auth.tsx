@@ -6,7 +6,7 @@ const GoogleAuth = () => {
   const classes = useStyles();
   const handleSignInClick = () => {
     // Successful logins will store a cookie session in the client
-    window.open("https://mern-stack-authentication.herokuapp.com/auth/google", "_self");
+    window.open("https://mern-stack-authentication.herokuapp.com/api/auth/google", "_self");
   };
 
   return (
@@ -25,4 +25,4 @@ const GoogleAuth = () => {
 
 export default GoogleAuth;
 
-//<a href="https://mern-stack-authentication.herokuapp.com/auth/google"></a>
+//<a href="https://mern-stack-authentication.herokuapp.com/api/auth/google"></a>
