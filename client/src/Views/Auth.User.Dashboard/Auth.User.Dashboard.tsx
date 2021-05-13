@@ -68,17 +68,16 @@ const AuthUserDashBoard = (props: any) => {
                     <li>
                         <h3>USERNAME: {currentUser.username}</h3>
                     </li>
-                    <Button
-                        as={Link}
-                        to="/dashboard"
-                        size="huge"
-                        inverted
-                        style={{ marginTop: 30 }}
-                    >
-                        Go to Public Dashboard
-                    </Button>
                 </ul>
             )}
+            <Button
+                as={Link}
+                to="/dashboard"
+                size="huge"
+                style={{ marginTop: 30 }}
+            >
+                Go to Public Dashboard
+            </Button>
         </div>
     );
 };
