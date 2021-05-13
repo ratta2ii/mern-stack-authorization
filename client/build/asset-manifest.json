@@ -1,30 +1,30 @@
 {
   "files": {
     "main.css": "/static/css/main.8d415e34.chunk.css",
-    "main.js": "/static/js/main.4deb39ea.chunk.js",
-    "main.js.map": "/static/js/main.4deb39ea.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.1e474881.js",
-    "runtime-main.js.map": "/static/js/runtime-main.1e474881.js.map",
+    "main.js": "/static/js/main.265577df.chunk.js",
+    "main.js.map": "/static/js/main.265577df.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.845413f3.js",
+    "runtime-main.js.map": "/static/js/runtime-main.845413f3.js.map",
     "static/css/2.f7dfbe06.chunk.css": "/static/css/2.f7dfbe06.chunk.css",
-    "static/js/2.0e84b152.chunk.js": "/static/js/2.0e84b152.chunk.js",
-    "static/js/2.0e84b152.chunk.js.map": "/static/js/2.0e84b152.chunk.js.map",
-    "static/js/3.d455a65e.chunk.js": "/static/js/3.d455a65e.chunk.js",
-    "static/js/3.d455a65e.chunk.js.map": "/static/js/3.d455a65e.chunk.js.map",
+    "static/js/2.f7b83e33.chunk.js": "/static/js/2.f7b83e33.chunk.js",
+    "static/js/2.f7b83e33.chunk.js.map": "/static/js/2.f7b83e33.chunk.js.map",
+    "static/js/3.7a9e08ce.chunk.js": "/static/js/3.7a9e08ce.chunk.js",
+    "static/js/3.7a9e08ce.chunk.js.map": "/static/js/3.7a9e08ce.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.f7dfbe06.chunk.css.map": "/static/css/2.f7dfbe06.chunk.css.map",
     "static/css/main.8d415e34.chunk.css.map": "/static/css/main.8d415e34.chunk.css.map",
-    "static/js/2.0e84b152.chunk.js.LICENSE.txt": "/static/js/2.0e84b152.chunk.js.LICENSE.txt",
-    "static/js/main.4deb39ea.chunk.js.LICENSE.txt": "/static/js/main.4deb39ea.chunk.js.LICENSE.txt",
+    "static/js/2.f7b83e33.chunk.js.LICENSE.txt": "/static/js/2.f7b83e33.chunk.js.LICENSE.txt",
+    "static/js/main.265577df.chunk.js.LICENSE.txt": "/static/js/main.265577df.chunk.js.LICENSE.txt",
     "static/media/semantic.min.css": "/static/media/outline-icons.ddae9b1b.woff",
     "static/media/facebook-social-sign-on.f71acf6a.png": "/static/media/facebook-social-sign-on.f71acf6a.png",
     "static/media/github-social-sign-on.c2ed0597.png": "/static/media/github-social-sign-on.c2ed0597.png",
     "static/media/google-social-sign-on.02e5dde5.png": "/static/media/google-social-sign-on.02e5dde5.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.1e474881.js",
+    "static/js/runtime-main.845413f3.js",
     "static/css/2.f7dfbe06.chunk.css",
-    "static/js/2.0e84b152.chunk.js",
+    "static/js/2.f7b83e33.chunk.js",
     "static/css/main.8d415e34.chunk.css",
-    "static/js/main.4deb39ea.chunk.js"
+    "static/js/main.265577df.chunk.js"
   ]
 }
