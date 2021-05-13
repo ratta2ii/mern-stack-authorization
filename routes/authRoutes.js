@@ -26,7 +26,7 @@ router.post("/users/register", function (req, res) {
           res.send(req.user);
         });
       }
-      //! To avoid someone stealing the account at a later login, this route is called and checked immediately upon a person first registering an account. If a user registers Oauth, client side will demand a password and route to here at that moment.
+      //? (REF: @AUTHROUTES 001)
       //* If there is a user through OAUTH, but no local account and password, set one
       else if (foundUser && !foundUser.localAccount) {
         console.log(chalk.red.bold("foundUser && !foundUser.localAccount"));
@@ -69,8 +69,7 @@ router.get(
 router.get(
   "/auth/google/redirect",
   passport.authenticate("google", {
-    failureRedirect:
-      "https://mern-stack-authentication.herokuapp.com/login",
+    failureRedirect: "https://mern-stack-authentication.herokuapp.com/login",
   }),
   function (req, res) {
     const myURL = `https://mern-stack-authentication.herokuapp.com/dashboard/user/${req.user._id}`;
@@ -87,15 +86,13 @@ router.get(
 router.get(
   "/auth/facebook/redirect",
   passport.authenticate("facebook", {
-    failureRedirect:
-      "https://mern-stack-authentication.herokuapp.com/login",
+    failureRedirect: "https://mern-stack-authentication.herokuapp.com/login",
   }),
   function (req, res) {
     const myURL = `https://mern-stack-authentication.herokuapp.com/dashboard/user/${req.user._id}`;
     res.redirect(myURL);
   }
 );
-
 
 //! GitHub OAuth Routes
 router.get(
@@ -106,8 +103,7 @@ router.get(
 router.get(
   "/auth/github/redirect",
   passport.authenticate("github", {
-    failureRedirect:
-      "https://mern-stack-authentication.herokuapp.com/login",
+    failureRedirect: "https://mern-stack-authentication.herokuapp.com/login",
   }),
   function (req, res) {
     const myURL = `https://mern-stack-authentication.herokuapp.com/dashboard/user/${req.user._id}`;
@@ -163,56 +159,12 @@ router.get("/logout", function (req, res) {
 
 module.exports = router;
 
-// router.post("/users/register",
-//     function (req, res) {
-//         User.findOne(
-//             { username: req.body.username },
-//             async function (err, foundUser) {
-//                 if (err) console.log(err);
-//                 else {
-//                     if (!foundUser) {
-//                         const user = new User({ username: req.body.username });
-//                         await user.setPassword(req.body.password);
-//                         user.localAccount = true;
-//                         await user.save();
-//                         passport.authenticate("local")(req, res, function () {
-//                             res.send(req.user);
-//                         });
-//                     } else {
-//                         // if a user exists through alternate OAuth, but no local strategy or password exists on user entry
-//                         if (!foundUser.localAccount) {
-//                             await foundUser.setPassword(req.body.password);
-//                             // (NOTES: @AUTHROUTES 001)
-//                             foundUser.localAccount = true;
-//                             await foundUser.save();
-//                             passport.authenticate("local")(req, res, function () {
-//                                 res.send(req.user);
-//                             });
-//                         } else {
-//                             console.log("This account already exists!");
-//                             res.send(err);
-//                             // req.login(foundUser, function (err) {
-//                             //     if (err) {
-//                             //         console.log(err);
-//                             //     } else {
-//                             //         passport.authenticate("local")(req, res, function () {
-//                             //             res.send(req.user);
-//                             //         });
-//                             //     }
-//                             // });
-//                         }
-//                     }
-//                 }
-//             }
-//         );
-//     }
-// );
-
-//! REFERENCE NOTES BELOW
-//? -----------------------------------------------------
+// ! REFERENCE NOTES BELOW
+// ? --------------------------------------------------
 
 /*
-? (REF: @AUTHROUTES 001)
-NOTE: "localAccount" is a Boolean property on the userSchema. Because users may first gain access through alternate OAuth methods (google, fb, etc.), I needed a way to check if the user currently registering "locally", had already registered locally before. Structuring the schema with this additional Boolean allowed me greater control when writing the conditional statements. This helped to prevent someone from registering a second time on an existing account (previously created through alt OAuth), which would have resulted in overwriting any previous passwords.
+* (REF: @AUTHROUTES 001)
+NOTE: "localAccount" is a Boolean property on the userSchema. Because users may first gain access through alternate OAuth methods (google, fb, etc.), I needed a way to check if the user currently registering "locally", had already registered locally before signing in through alternate means. Structuring the schema with this additional Boolean allowed me greater control when writing the conditional statements. This helped to prevent someone from registering a second time on an existing account (previously created through alt OAuth), which would have resulted in overwriting any previous passwords.
 That said, I was originally faced with this issue after having trouble running conditional statements on any database field values that were security related (ex: password, salt, hash). This is my reasoning behind creating an additional Boolean field-localAccount- that would keep track of whether or not a local strategy already exists on a user entry.
+To avoid someone stealing the account at a later login, this route is called and checked immediately upon a person first registering an account. If a user registers an account through Oauth, the client side will demand a password and route to here at that moment, adding a password to the existing user under that username(email).
 */

@@ -67,33 +67,30 @@ function createNewAccountHelper(profile, newAccountObj, done) {
     emailAddress = profile.email;
   }
 
-  User.findOrCreate(
-    { username: emailAddress },
-    async function (err, user) {
-      if (!err) {
-        if (user && !user.accounts) {
-          user.accounts = new Map();
-          user.accounts.set(newAccountObj.accountType, newAccountObj);
-          user.save();
-        }
-        // If the specified account does not exists in the already existing account map
-        else if (!user.accounts.get(newAccountObj.accountType)) {
-          user.accounts.set(newAccountObj.accountType, newAccountObj);
-          user.save();
-        }
-        return done(err, user);
-      } else {
-        console.log(err);
+  User.findOrCreate({ username: emailAddress }, async function (err, user) {
+    if (!err) {
+      if (user && !user.accounts) {
+        user.accounts = new Map();
+        user.accounts.set(newAccountObj.accountType, newAccountObj);
+        user.save();
       }
+      // If the specified account does not exists in the already existing account map
+      else if (!user.accounts.get(newAccountObj.accountType)) {
+        user.accounts.set(newAccountObj.accountType, newAccountObj);
+        user.save();
+      }
+      return done(err, user);
+    } else {
+      console.log(err);
     }
-  );
+  });
 }
 
 //! REFERENCE NOTES BELOW
 //? -----------------------------------------------------
 
 /*
-? (REF: MODELS 001)
+? (REF: @STRATEGIES 001)
 * NEW VERSION: passport.use(User.createStrategy());
 An alternate way of implemting a local strategy. New version registers a single method to passport
 * PREVIOUS VERSION: See below

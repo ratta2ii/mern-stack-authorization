@@ -19,14 +19,6 @@ exports.userSchema = new mongoose.Schema({
     accounts: Map
 });
 
-
-
-
-
-
-
-
-
 //! REFERENCE NOTES BELOW
 //? -----------------------------------------------------
 
@@ -49,7 +41,7 @@ possible idea for future local login credentials
     password: "5d41402abc4b2a76b9719d911017c592"
 }
 
-? Future schema ??? (DO NOT DELETE)
+? Future schema ???
 var userSchema = new mongoose.Schema({
     local: {
         name: { type: String },

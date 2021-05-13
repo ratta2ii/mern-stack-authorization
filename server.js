@@ -54,12 +54,7 @@ app.use(passport.session());
 //! IMPORTANT: routes must follow passport initialize() and session() in order to avoid the out-of-order middleware hell that express makes it so easy to enter. Also, serving the static files and routes could be inverse, with routes preceeding the static files, but it not working in this particular case -so I left them alone here.
 app.use("/api", routes);
 
-app.get("/test", function (req, res) {
-  res.send("Hello world");
-});
-
 // ! To enable hosting React app along side server, serve React build folder as static files
-// ? Currently hosting REACT APP completely seperate on gh-pages
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
 }
