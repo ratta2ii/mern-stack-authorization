@@ -17,8 +17,10 @@ const Dashboard = (props: any) => {
   return (
     <Container
       style={{
-        fontSize: 18,
+        fontSize: 16,
         fontFamily: "monospace",
+        width: "80%",
+        marginTop: 150,
       }}
     >
       <p>Welcome to my MERN Stack Authentication Application</p>
@@ -28,7 +30,7 @@ const Dashboard = (props: any) => {
         authentication using various OAuth Strategies. The app focuses
         specifically, on the Google, Facebook, and GitHub strategies in order to
         authenticate a user using OAuth 2.0.. I have also added a "local"
-        strategy so a user can register an acoount by entering their email and a
+        strategy so a user can register an account by entering their email and a
         password, instead of using the OAuth services. The password will be a
         salted hashed password that will be stored in a MongoDB database.
       </p>
@@ -45,8 +47,7 @@ const Dashboard = (props: any) => {
           file
         </li>
         <li>
-          All authentication is done server-side through routes on the Express
-          server
+          All authentication is done server-side using passport.js to authenticate users
         </li>
         <li>
           The Mongoose Schema, and code logic, is configured in a way to allow
