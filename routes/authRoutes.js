@@ -26,6 +26,7 @@ router.post("/users/register", function (req, res) {
           res.send(req.user);
         });
       }
+      //! To avoid someone stealing the account at a later login, this route is called and checked immediately upon a person first registering an account. If a user registers Oauth, client side will demand a password and route to here at that moment.
       //* If there is a user through OAUTH, but no local account and password, set one
       else if (foundUser && !foundUser.localAccount) {
         console.log(chalk.red.bold("foundUser && !foundUser.localAccount"));

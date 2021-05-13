@@ -46,7 +46,7 @@ exports.gitHubStrategy = new GitHubStrategy(
     callbackURL: process.env.GITHUB_CALLBACK_URL,
   },
   function (accessToken, refreshToken, profile, done) {
-    const newGitHubAccountObj = { accountType: "github", uid: JSON.stringify(profile) };
+    const newGitHubAccountObj = { accountType: "github", uid: profile.id };
     createNewAccountHelper(profile, newGitHubAccountObj, done);
   }
 );
@@ -59,15 +59,16 @@ function createNewAccountHelper(profile, newAccountObj, done) {
   ? NOTE: See database/db.js to view plugin, middleware order, etc.
   */
 
-  let email;
+  // The response to the GitHub strategy is stored differently than the others
+  let emailAddress;
   if (profile._json.email) {
-    email = profile._json.email;
+    emailAddress = profile._json.email;
   } else {
-    email = profile.email;
+    emailAddress = profile.email;
   }
 
   User.findOrCreate(
-    { username: email },
+    { username: emailAddress },
     async function (err, user) {
       if (!err) {
         if (user && !user.accounts) {

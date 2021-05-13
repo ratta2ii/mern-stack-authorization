@@ -7,23 +7,23 @@ const { userSchema } = require("./models");
 const mongoUri = process.env.MONGODB_CONNECTION_STRING;
 // Connect to database, create schema, and encrypt password
 mongoose.connect(mongoUri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    //useFindAndModify: false, 
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  //useFindAndModify: false, 
 }).then(
-    () => { 
-        /** ready to use. The `mongoose.connect()` promise resolves to undefined. */ 
-        console.log('Connected to Mongo');
-        
-    },
-    err => {
-         /** handle initial connection error */ 
-         console.log('error connecting to Mongo: ')
-         console.log(err);
-         
-        }
-  );
+  () => {
+    /** ready to use. The `mongoose.connect()` promise resolves to undefined. */
+    console.log('Connected to Mongo');
+
+  },
+  err => {
+    /** handle initial connection error */
+    console.log('error connecting to Mongo: ')
+    console.log(err);
+
+  }
+);
 
 /**
 1. Passport-Local Mongoose will add a username, hash and salt field to the schema (userSchema here)
