@@ -27,10 +27,10 @@ const Dashboard = (props: any) => {
         The purpose of this application is to demonstrate a working knowledge of
         authentication using various OAuth Strategies. The app focuses
         specifically, on the Google, Facebook, and GitHub strategies in order to
-        authenticate a user using OAuth 2.0. I have also added a "local"
-        strategy so a user can register and log on using an email and password as well. The
-        password will be stored as a salted hashed password in a MongoDB
-        database.
+        authenticate a user using OAuth 2.0.. I have also added a "local"
+        strategy so a user can register an acoount by entering their email and a
+        password, instead of using the OAuth services. The password will be a
+        salted hashed password that will be stored in a MongoDB database.
       </p>
       <p style={{ fontWeight: 600 }}>Details:</p>
       <ul>
@@ -50,8 +50,8 @@ const Dashboard = (props: any) => {
         </li>
         <li>
           The Mongoose Schema, and code logic, is configured in a way to allow
-          all sign-on methods (OAuth and Local) to persist while always returning the same user
-          object
+          all sign-in methods (OAuth and Local) to persist while always
+          returning the same user object
         </li>
       </ul>
       <p style={{ fontWeight: 600 }}>Important Note:</p>
