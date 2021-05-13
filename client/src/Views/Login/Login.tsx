@@ -3,7 +3,6 @@ import { observer } from "mobx-react-lite";
 import LoginForm from "../../Components/Login.Form/Login.Form";
 import GoogleAuth from "../../App/Auth/Google.Auth";
 import FacebookAuth from "../../App/Auth/Facebook.Auth";
-import GitHubAuth from "../../App/Auth/GitHub.Auth";
 
 function Login() {
   return (
@@ -33,10 +32,12 @@ function Login() {
         {/* //! FacebookAuth Component */}
         <FacebookAuth />
       </div>
+      {/* 
       <div>
-        {/* //! GoogleAuth Component */}
+        //! GitHubAuth Component 
         <GitHubAuth />
       </div>
+      */}
     </div>
   );
 }

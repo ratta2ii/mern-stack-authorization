@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
-import { Button, Container, Grid } from "semantic-ui-react";
+import { Button, Container } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { useStore } from "../../App/Stores/store";
 
@@ -28,15 +28,16 @@ const Dashboard = (props: any) => {
       <p>
         The purpose of this application is to demonstrate a working knowledge of
         authentication using various OAuth Strategies. The app focuses
-        specifically, on the Google, Facebook, and GitHub strategies in order to
+        specifically, on the Google and Facebook strategies in order to
         authenticate a user using OAuth 2.0.. I have also added a "local"
-        strategy so a user can register an account by entering their email and a
-        password, instead of using the OAuth services. The password will be a
-        salted hashed password that will be stored in a MongoDB database.
+        strategy so a user can register an account by entering an email and
+        password -instead of using the OAuth services. The password
+        will be a salted, hashed password, that will be stored in a MongoDB
+        database.
       </p>
       <p style={{ fontWeight: 600 }}>Details:</p>
       <ul>
-        <li>MongoDb, Express, React, Node.js (MERN) Stack</li>
+        <li>MongoDb, Express, React, Node.js (MERN) Stack and Passport.js for authentication</li>
         <li>Database hosted on AWS S3 through MongoDb Atlas</li>
         <li>
           Both the Express API and the React client are hosted side-by-side on
@@ -47,7 +48,8 @@ const Dashboard = (props: any) => {
           file
         </li>
         <li>
-          All authentication is done server-side using passport.js to authenticate users
+          All authentication is done server-side using passport.js to
+          authenticate users
         </li>
         <li>
           The Mongoose Schema, and code logic, is configured in a way to allow
@@ -57,9 +59,11 @@ const Dashboard = (props: any) => {
       </ul>
       <p style={{ fontWeight: 600 }}>Important Note:</p>
       <p>
-        The application is currently in maintenance with only a single test user
-        for the OAuth strategies. You can however still log in through the more
-        traditional way of a username and password.
+        The application is currently considered in developement with Facebook,
+        which means there is currently only a single test user for this OAuth
+        strategy. You can, however, still register and log in using the Google
+        OAuth, as well as the more traditional way of using a username and
+        password.
       </p>
       {!currentUser && (
         <Button

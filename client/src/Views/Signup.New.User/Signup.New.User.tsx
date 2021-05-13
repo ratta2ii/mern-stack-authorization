@@ -3,7 +3,6 @@ import { observer } from "mobx-react-lite";
 import NewUserForm from "../../Components/New.User.Form/New.User.Form";
 import GoogleAuth from "../../App/Auth/Google.Auth";
 import FacebookAuth from "../../App/Auth/Facebook.Auth";
-import GitHubAuth from "../../App/Auth/GitHub.Auth";
 
 const SignupNewUser = () => {
   return (
@@ -33,12 +32,14 @@ const SignupNewUser = () => {
         {/* //! FacebookAuth Component */}
         <FacebookAuth />
       </div>
+      {/* 
       <div>
-        {/* //! GoogleAuth Component */}
+        //! GitHubAuth Component 
         <GitHubAuth />
       </div>
+      */}
     </div>
   );
-}
+};
 
 export default observer(SignupNewUser);
