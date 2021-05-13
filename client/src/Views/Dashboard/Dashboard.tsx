@@ -49,8 +49,8 @@ const Dashboard = (props: any) => {
           server
         </li>
         <li>
-          The Mongoose Shema, and code logic, is configured in a way to allow
-          all sign-on methods to persist while always returning the same user
+          The Mongoose Schema, and code logic, is configured in a way to allow
+          all sign-on methods (OAuth and Local) to persist while always returning the same user
           object
         </li>
       </ul>
