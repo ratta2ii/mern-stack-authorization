@@ -95,6 +95,25 @@ router.get(
   }
 );
 
+
+//! GitHub OAuth Routes
+router.get(
+  "/auth/github",
+  passport.authenticate("github", { scope: ["email"] })
+);
+
+router.get(
+  "/auth/github/redirect",
+  passport.authenticate("github", {
+    failureRedirect:
+      "https://mern-stack-authentication.herokuapp.com/login",
+  }),
+  function (req, res) {
+    const myURL = `https://mern-stack-authentication.herokuapp.com/dashboard/user/${req.user._id}`;
+    res.redirect(myURL);
+  }
+);
+
 //* READ ONE
 router.get("/userdata/:userId/", function (req, res) {
   const id = req.params.userId;

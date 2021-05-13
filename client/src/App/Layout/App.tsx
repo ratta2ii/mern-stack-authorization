@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { Container } from "semantic-ui-react";
 import { observer } from "mobx-react-lite";
 import NavBar from "./NavBar";

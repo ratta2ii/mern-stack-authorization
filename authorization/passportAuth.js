@@ -1,7 +1,6 @@
 const passport = require("passport");
 const { User } = require("./../database/db");
-const { googleStrategy, facebookStrategy } = require("./strategies");
-
+const { googleStrategy, facebookStrategy, gitHubStrategy } = require("./strategies");
 
 //! creates a "local" strategy on the User model
 passport.use(User.createStrategy());
@@ -9,6 +8,8 @@ passport.use(User.createStrategy());
 passport.use(googleStrategy);
 
 passport.use(facebookStrategy);
+
+passport.use(gitHubStrategy);
 
 passport.serializeUser(function (user, done) {
     done(null, user.id);
