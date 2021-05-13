@@ -6,7 +6,7 @@ const GitHubAuth = () => {
   const classes = useStyles();  
   const handleSignInClick = () => {
     // Successful logins will store a cookie session in the client
-    window.open("https://mern-stack-authentication.herokuapp.com/api/auth/google", "_self");
+    window.open("/api/auth/google", "_self");
   };
 
   return (

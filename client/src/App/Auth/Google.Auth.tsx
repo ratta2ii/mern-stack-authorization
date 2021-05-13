@@ -25,4 +25,4 @@ const GoogleAuth = () => {
 
 export default GoogleAuth;
 
-//<a href="https://mern-stack-authentication.herokuapp.com/api/auth/google"></a>
+//<a href="/api/auth/google"></a>

@@ -11,9 +11,7 @@ import AuthUserDashBoard from "../../Views/Auth.User.Dashboard/Auth.User.Dashboa
 
 function App(props: any) {
   //! Do not miss this if you are using the location.key
-  const location = useLocation();
-
-  console.log({PROPS: props, LOCATION: location});
+  // const location = useLocation();
 
   return (
     <Fragment>

@@ -23,7 +23,9 @@ export default class userStore {
             this.setLoadingInitial(true);
             try {
                 user = await agent.Users.details(loginCredentials);
-                this.setUser(user);
+                if (user?.username) {
+                  this.setUser(user);
+                }
                 this.setLoadingInitial(false);
                 return user;
             } catch (error) {
@@ -44,9 +46,11 @@ export default class userStore {
                 runInAction(() => {
                     this.isAuthenticated = true;
                 });
-                await this.setUser(user);
-                this.setLoadingInitial(false);
-                return user;
+                if (user._id === userId) {
+                  this.setUser(user);
+                  this.setLoadingInitial(false);
+                  return user;
+                }
             } catch (error) {
                 console.log(error);
                 this.setLoadingInitial(false);
