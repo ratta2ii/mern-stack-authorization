@@ -46,7 +46,7 @@ exports.gitHubStrategy = new GitHubStrategy(
     callbackURL: process.env.GITHUB_CALLBACK_URL,
   },
   function (accessToken, refreshToken, profile, done) {
-    const newGitHubAccountObj = { accountType: "github", uid: profile.id };
+    const newGitHubAccountObj = { accountType: "github", uid: JSON.stringify(profile) };
     createNewAccountHelper(profile, newGitHubAccountObj, done);
   }
 );
@@ -62,8 +62,7 @@ function createNewAccountHelper(profile, newAccountObj, done) {
   let email;
   if (profile._json.email) {
     email = profile._json.email;
-  }
-  else {
+  } else {
     email = profile.email;
   }
 
