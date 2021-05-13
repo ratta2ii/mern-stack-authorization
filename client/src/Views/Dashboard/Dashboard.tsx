@@ -28,7 +28,7 @@ const Dashboard = (props: any) => {
         authentication using various OAuth Strategies. The app focuses
         specifically, on the Google, Facebook, and GitHub strategies in order to
         authenticate a user using OAuth 2.0. I have also added a "local"
-        strategy so a user can sign-on using an email and password as well. The
+        strategy so a user can register and log on using an email and password as well. The
         password will be stored as a salted hashed password in a MongoDB
         database.
       </p>
