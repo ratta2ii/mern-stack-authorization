@@ -42,7 +42,7 @@ exports.gitHubStrategy = new GitHubStrategy(
   {
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    scope: ["user:email"],
+    scope: "user:email",
     callbackURL: process.env.GITHUB_CALLBACK_URL,
   },
   function (accessToken, refreshToken, profile, done) {
