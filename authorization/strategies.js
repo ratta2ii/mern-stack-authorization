@@ -59,8 +59,16 @@ function createNewAccountHelper(profile, newAccountObj, done) {
   ? NOTE: See database/db.js to view plugin, middleware order, etc.
   */
 
+  let email;
+  if (profile._json.email) {
+    email = profile._json.email;
+  }
+  else {
+    email = profile.email;
+  }
+
   User.findOrCreate(
-    { username: profile._json.email },
+    { username: email },
     async function (err, user) {
       if (!err) {
         if (user && !user.accounts) {
