@@ -1,8 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import NewUserForm from "../../Components/New.User.Form/New.User.Form";
-import GoogleAuth from "../../App/Auth/Google.Auth";
-import FacebookAuth from "../../App/Auth/Facebook.Auth";
 
 const SignupNewUser = () => {
   return (
@@ -23,21 +21,6 @@ const SignupNewUser = () => {
           formDescription="Enter your email and choose a password"
         />
       </div>
-
-      <div>
-        {/* //! GoogleAuth Component */}
-        <GoogleAuth />
-      </div>
-      <div>
-        {/* //! FacebookAuth Component */}
-        <FacebookAuth />
-      </div>
-      {/* 
-      <div>
-        //! GitHubAuth Component 
-        <GitHubAuth />
-      </div>
-      */}
     </div>
   );
 };

@@ -1,9 +1,10 @@
 import React, { ChangeEvent, useState } from "react";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import { Button, TextField, Paper, Typography } from "@material-ui/core";
+import OAuthButtons from "../OAuth.Buttons/OAuth.Buttons";
 import useStyles from "./Login.Form.Styles";
 import { useStore } from "../../App/Stores/store";
-import { Link } from "react-router-dom";
 
 interface Props {
   formName: string;
@@ -93,6 +94,7 @@ const LoginForm = ({ formName, formDescription }: Props) => {
           <Link to="/signup">Need an account? Signup HERE</Link>
         </div>
       </Paper>
+      <OAuthButtons />
     </div>
   );
 };

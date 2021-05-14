@@ -16,11 +16,10 @@ const HomePage = () => {
           />
           MERN Stack
         </Header>
-        {/* <Header as="h2" inverted content="Authentication with Passport.js" /> */}
         <Header
           as="h4"
           inverted
-          content="MongoDB | Express | React | Node.js | JavaScript | TypeScript | Passport -OAuth 2.0"
+          content="MongoDB | Express | React | Node.js | JavaScript | TypeScript | Passport (OAuth 2.0)"
         />
         <Button
           as={Link}

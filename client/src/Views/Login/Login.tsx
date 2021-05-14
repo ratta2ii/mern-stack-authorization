@@ -1,10 +1,8 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import LoginForm from "../../Components/Login.Form/Login.Form";
-import GoogleAuth from "../../App/Auth/Google.Auth";
-import FacebookAuth from "../../App/Auth/Facebook.Auth";
 
-function Login() {
+const Login = function () {
   return (
     <div
       style={{
@@ -23,21 +21,6 @@ function Login() {
           formDescription="IMPORTANT: Your email is your username"
         />
       </div>
-
-      <div>
-        {/* //! GoogleAuth Component */}
-        <GoogleAuth />
-      </div>
-      <div>
-        {/* //! FacebookAuth Component */}
-        <FacebookAuth />
-      </div>
-      {/* 
-      <div>
-        //! GitHubAuth Component 
-        <GitHubAuth />
-      </div>
-      */}
     </div>
   );
 }

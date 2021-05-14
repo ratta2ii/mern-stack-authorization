@@ -35,10 +35,6 @@ function App(props: any) {
 
 export default observer(App);
 
-{/* <Route exact path="/">
-  {loggedIn ? <Redirect to="/dashboard" /> : <PublicHomePage />}
-</Route> */}
-
 // import React, { Fragment } from "react";
 // import { Container } from "semantic-ui-react";
 // import NavBar from "./NavBar";
@@ -111,3 +107,7 @@ export default observer(App);
 //   </Fragment>
 // );
 // }
+
+// <Route exact path="/">
+//   {loggedIn ? <Redirect to="/dashboard" /> : <PublicHomePage />}
+// </Route> 

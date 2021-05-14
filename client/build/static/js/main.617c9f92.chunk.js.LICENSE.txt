@@ -4,4 +4,4 @@
 
 //! This will need to throw an error and let a user know to try again or go to login
 
-//! This will not work for when users enter info of already existing accounts. 
+//! This will not work for when users enter info of already existing accounts.
