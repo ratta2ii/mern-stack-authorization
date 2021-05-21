@@ -28,7 +28,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//? CORS is enabled for either developement, or when the API and client are hosted on 2 seperate platforms. Note: The current Express server is serving both API and React app, but I left this here to revisit later.
+//? CORS is enabled for either development, or when the API and client are hosted on 2 separate platforms. Note: The current Express server is serving both API and React app, but I left this here to revisit later.
 var corsOptions = {
   origin: "https://mern-stack-authentication.herokuapp.com",
   optionsSuccessStatus: 200, // For legacy browser support
@@ -51,7 +51,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-//! IMPORTANT: routes must follow passport initialize() and session() in order to avoid the out-of-order middleware hell that express makes it so easy to enter. Also, serving the static files and routes could be inverse, with routes preceeding the static files, but it not working in this particular case -so I left them alone here.
+//! IMPORTANT: routes must follow passport initialize() and session() in order to avoid the out-of-order middleware hell that express makes it so easy to enter. Also, serving the static files and routes could be inverse, with routes preceding the static files, but it not working in this particular case -so I left them alone here.
 app.use("/api", routes);
 
 // ! To enable hosting React app along side server, serve React build folder as static files
