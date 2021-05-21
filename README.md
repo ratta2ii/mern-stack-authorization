@@ -1,6 +1,6 @@
 # MERN Stack Authentication
 
-##### Live Demo: [MERN Stack Authentication Website](https://mern-stack-authentication.herokuapp.com/)
+##### Live Demo: [MERN Stack Authentication Website](https://mern-stack-authentication.herokuapp.com/) (Heroku set slow loading after 30 mins of inactivity)
 
 ##### Repository: [github.com/ratta2ii/mern-stack-authorization](https://github.com/ratta2ii/mern-stack-authorization)
 
