@@ -1,5 +1,5 @@
 const passport = require("passport");
-const { User } = require("./../database/db");
+const { User } = require("../database/db");
 const { googleStrategy, facebookStrategy, gitHubStrategy } = require("./strategies");
 
 //! creates a "local" strategy on the User model

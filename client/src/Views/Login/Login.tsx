@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { observer } from "mobx-react-lite";
+import { useStore } from "./../../App/Stores/store";
 import LoginForm from "../../Components/Login.Form/Login.Form";
+import { useHistory } from "react-router";
 
 const Login = function () {
+  const { userStore } = useStore();
+  const { isAuthenticated, currentUser, loadingInitial } = userStore;
+  const history = useHistory();
+
+  useEffect(() => {
+    if (isAuthenticated && currentUser) {
+      history.push(`/dashboard/user/${currentUser._id}`);
+    }
+    return () => {}
+  }, [currentUser, history, isAuthenticated, loadingInitial]);
+  
   return (
     <div
       style={{

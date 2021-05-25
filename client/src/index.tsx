@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { store, StoreContext } from './App/Stores/store';
 import 'semantic-ui-css/semantic.min.css'
 import 'react-calendar/dist/Calendar.css';
+import 'react-toastify/dist/ReactToastify.min.css';
 import './App/Layout/styles.css';
 import App from './App/Layout/App';
 

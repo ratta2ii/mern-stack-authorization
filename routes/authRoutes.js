@@ -1,23 +1,23 @@
 var express = require("express");
 var passport = require("passport");
 const { User } = require("./../database/db.js");
+const { getGoogleProfileInfo } = require("../authorization/googleAuth");
 var router = express.Router();
-
 const chalk = require("chalk");
 const log = console.log;
-// Combine styled and normal strings
-log(chalk.blue("Hello") + " World" + chalk.red("!"));
-// Compose multiple styles using the chainable API
-log(chalk.blue.bgRed.bold("Hello world!"));
+
+log(getGoogleProfileInfo);
 
 router.post("/users/register", function (req, res) {
   User.findOne(
     { username: req.body.username },
     async function (err, foundUser) {
-      if (err) console.log(err);
+      if (err) {
+        console.log(err);
+        res.status(401).send("Error logging in User!");
+      }
       //* If there is no user, create a new user
       if (!foundUser) {
-        console.log(chalk.blue.bold("!foundUser"));
         const user = new User({ username: req.body.username });
         await user.setPassword(req.body.password);
         user.localAccount = true;
@@ -29,7 +29,6 @@ router.post("/users/register", function (req, res) {
       //? (REF: @AUTHROUTES 001)
       //* If there is a user through OAUTH, but no local account and password, set one
       else if (foundUser && !foundUser.localAccount) {
-        console.log(chalk.red.bold("foundUser && !foundUser.localAccount"));
         await foundUser.setPassword(req.body.password);
         foundUser.localAccount = true;
         await foundUser.save();
@@ -54,67 +53,55 @@ router.post("/login", function (req, res) {
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function () {
-        res.send(req.user);
+        log("/login", req.user);
+        log(chalk.blue("/login req.isAuthenticated() ", req.isAuthenticated()));
+        if (req.isAuthenticated()) {
+          res.send(req.user);
+        }
       });
     }
   });
 });
 
-//! Google OAuth Routes
-router.get(
-  "/auth/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
+router.post("/auth/google", async (req, res) => {
+  try {
+    const code = req.body.code;
+    const profile = await getGoogleProfileInfo(code);
 
-router.get(
-  "/auth/google/redirect",
-  passport.authenticate("google", {
-    failureRedirect: "https://mern-stack-authentication.herokuapp.com/login",
-  }),
-  function (req, res) {
-    const myURL = `https://mern-stack-authentication.herokuapp.com/dashboard/user/${req.user._id}`;
-    res.redirect(myURL);
+    User.findOrCreate({ username: profile.email }, async function (err, user) {
+      let newUser = { uid: profile.sub, username: profile.email };
+      if (!err) {
+        if (user && !user.accounts) {
+          user.accounts = new Map();
+          user.accounts.set("google", newUser);
+          user.save();
+        }
+        // If the specified account does not exists in the already existing account map
+        else if (!user.accounts.get("google")) {
+          user.accounts.set("google", newUser);
+          user.save();
+        }
+        req.login(user, function (err) {
+          if (err) {
+            console.log(err);
+          } else if (req.isAuthenticated()) {
+            res.send({ user: req.user });
+          }
+        });
+      } else {
+        console.log(err);
+        res.status(401).send();
+      }
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(401).send("Error logging in with Google Account!");
   }
-);
-
-//! Facebook OAuth Routes
-router.get(
-  "/auth/facebook",
-  passport.authenticate("facebook", { scope: ["email"] })
-);
-
-router.get(
-  "/auth/facebook/redirect",
-  passport.authenticate("facebook", {
-    failureRedirect: "https://mern-stack-authentication.herokuapp.com/login",
-  }),
-  function (req, res) {
-    const myURL = `https://mern-stack-authentication.herokuapp.com/dashboard/user/${req.user._id}`;
-    res.redirect(myURL);
-  }
-);
-
-//! GitHub OAuth Routes
-router.get(
-  "/auth/github",
-  passport.authenticate("github", { scope: ["email"] })
-);
-
-router.get(
-  "/auth/github/redirect",
-  passport.authenticate("github", {
-    failureRedirect: "https://mern-stack-authentication.herokuapp.com/login",
-  }),
-  function (req, res) {
-    const myURL = `https://mern-stack-authentication.herokuapp.com/dashboard/user/${req.user._id}`;
-    res.redirect(myURL);
-  }
-);
+});
 
 //* READ ONE
 router.get("/userdata/:userId/", function (req, res) {
   const id = req.params.userId;
-
   User.findOne({ _id: id }, function (err, foundUser) {
     if (!err) {
       if (!foundUser) {
@@ -154,6 +141,18 @@ router.get("/logout", function (req, res) {
     res.send({ message: "logging out" });
   } else {
     res.send({ message: "no user to log out" });
+  }
+});
+
+router.get("/test-route", (request, response) => {
+  if (request.isAuthenticated()) {
+    response
+      .status(200)
+      .send({ message: 'User is Authorized to access "/test-route"' });
+  } else {
+    response
+      .status(401)
+      .send({ message: 'User is NOT Authorized to access "/test-route"' });
   }
 });
 

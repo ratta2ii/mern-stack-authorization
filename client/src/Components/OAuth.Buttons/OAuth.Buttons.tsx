@@ -1,19 +1,24 @@
+// import FacebookAuth from "../../App/Auth/Facebook.Auth";
+// import GoogleAuth from "../../App/Auth/Google.Auth";
+// import GitHubAuth from "../../App/Auth/GitHub.Auth";
 import React from "react";
-import FacebookAuth from "../../App/Auth/Facebook.Auth";
-import GoogleAuth from "../../App/Auth/Google.Auth";
+import GoogleAuthLogin from "../../App/Auth/GoogleLogin/GoogleAuthLogin";
 
 const OAuthButtons = () => {
   return (
     <div>
+      <GoogleAuthLogin />
+      {/* 
+      //! GoogleAuth Component 
       <div>
-        {/* //! GoogleAuth Component */}
         <GoogleAuth />
       </div>
+
       <div>
-        {/* //! FacebookAuth Component */}
+       //! FacebookAuth Component 
         <FacebookAuth />
       </div>
-      {/* 
+    
       <div>
         //! GitHubAuth Component 
         <GitHubAuth />

@@ -1,12 +1,12 @@
 import React from "react";
+import GitHubIcon from "./../../../Images/github-social-sign-on.png";
 import useStyles from "./social.icon.styles";
-import GitHubIcon from "./../../Images/github-social-sign-on.png";
 
 const GitHubAuth = () => {
   const classes = useStyles();  
   const handleSignInClick = () => {
     // Successful logins will store a cookie session in the client
-    window.open("/api/auth/github", "_self");
+    window.open("https://mern-stack-authentication.herokuapp.com/api/auth/github", "_self");
   };
 
   return (

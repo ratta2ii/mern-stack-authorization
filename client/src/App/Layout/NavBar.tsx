@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Menu } from "semantic-ui-react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useStore } from "../Stores/store";
 import { observer } from "mobx-react-lite";
 import PassportIcon from "./../../Images/passport-js-icon.png";
@@ -8,6 +8,7 @@ import PassportIcon from "./../../Images/passport-js-icon.png";
 const NavBar = () => {
   const { userStore } = useStore();
   const { logUserOut, currentUser } = userStore;
+  const history = useHistory();
   const [currentUserName, setCurrentUserName] = useState<string>();
 
   useEffect(() => {
@@ -16,31 +17,29 @@ const NavBar = () => {
   }, [currentUser]);
 
   const handleLogUserOut = () => {
-    setCurrentUserName("");
-    logUserOut();
+    logUserOut().then(() => {
+      history.push("/login");
+    });
   };
 
   return (
     <Menu inverted fixed="top">
       <Container>
         <Menu.Item as={NavLink} to="/" exact header>
-          <img
-            src={PassportIcon}
-            alt="logo"
-            style={{ marginRight: 10 }}
-          />
+          <img src={PassportIcon} alt="logo" style={{ marginRight: 10 }} />
           MERN Stack Authentication
         </Menu.Item>
-        {!currentUser && (
-            <Menu.Item>
-            <Button as={NavLink} to="/login" positive content="Login" />
-            {/* Register Button (currrently just anchor text to create new account) */}
-            {/* <Button
+        <Menu.Item>
+            <Button
               as={NavLink}
-              to="/signup"
-              content="Register"
-              style={{ marginLeft: 7 }}
-            /> */}
+              to="/dashboard"
+              content="Home"
+              positive
+            />
+          </Menu.Item>
+        {!currentUser && (
+          <Menu.Item>
+            <Button as={NavLink} to="/login" positive content="Login" />
           </Menu.Item>
         )}
         {currentUser && (

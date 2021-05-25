@@ -32,11 +32,9 @@ const LoginForm = ({ formName, formDescription }: Props) => {
 
   const handleOnSubmit = (event: any) => {
     event.preventDefault();
-
     loadUser(loginCredentials).then((res) => {
-      if (res) {
-        console.log("I am the response in handleOnSubmit: ", res);
-        history.push(`/dashboard/user/${res._id}`);
+      if (res?.username === loginCredentials.username) {
+        history.push(`/dashboard/user/${res?._id}`);
       } else {
         history.push("/login");
       }

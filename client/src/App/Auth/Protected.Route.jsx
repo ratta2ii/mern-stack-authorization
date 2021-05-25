@@ -1,24 +1,30 @@
-/*
-! Component is a good monel, however, it does fit my situation
-import React from "react";
+// ! Component is a good model, however, it does fit my situation
+import { observer } from "mobx-react-lite";
+import React, { useEffect } from "react";
 import { Redirect, Route } from "react-router-dom";
-import auth from "./Auth";
+import { useStore } from "../Stores/store";
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const { userStore } = useStore();
+  const { isAuthenticated, currentUser } = userStore;
+
+  useEffect(() => {
+  }, [isAuthenticated, currentUser])
+  
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (auth.isAuthenticated()) {
+        if (isAuthenticated || currentUser) {
           return <Component {...props} />;
         } else {
           return (
             <Redirect
               to={{
-                pathname: "/",
+                pathname: "/login",
                 state: {
-                  from: props.location
-                }
+                  from: props.location,
+                },
               }}
             />
           );
@@ -28,8 +34,9 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-export default ProtectedRoute;
+export default observer(ProtectedRoute);
 
+/*
 ! This fallows the singleton pattern for creating a singly user instance
 ? Notice how the class is being instantiated before it is being exported
 * Example: import authInstance from "./../Auth";

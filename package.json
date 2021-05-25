@@ -1,15 +1,18 @@
 {
   "name": "mern-stack-authentication",
   "version": "1.0.0",
-  "description": "MERN stack application that demostrates authentication and authorization using Passport.js",
+  "description": "MERN stack application that demonstrates authentication and authorization using Passport.js",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "https://git.heroku.com/mern-stack-authentication.git"
+    "url": ""
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "server": "nodemon server.js",
+    "start": "node server.js",
+    "client": "cd ./client && npm run start",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "Trevor Mackin",
@@ -20,11 +23,13 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "chalk": "^4.1.1",
+    "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "google-auth-library": "^7.0.4",
     "lodash": "^4.17.21",
     "md5": "^2.3.0",
     "mongoose": "^5.12.5",

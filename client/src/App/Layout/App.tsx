@@ -8,6 +8,7 @@ import Dashboard from "../../Views/Dashboard/Dashboard";
 import SignupNewUser from "../../Views/Signup.New.User/Signup.New.User";
 import Login from "../../Views/Login/Login";
 import AuthUserDashBoard from "../../Views/Auth.User.Dashboard/Auth.User.Dashboard";
+import ProtectedRoute from "../Auth/Protected.Route";
 
 function App(props: any) {
   //! Do not miss this if you are using the location.key
@@ -22,7 +23,7 @@ function App(props: any) {
           <Route exact path={["/dashboard"]} component={Dashboard} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignupNewUser} />
-          <Route
+          <ProtectedRoute
             exact
             path="/dashboard/user/:id"
             component={AuthUserDashBoard}

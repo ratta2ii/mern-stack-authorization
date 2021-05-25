@@ -1,0 +1,13 @@
+.login-page {
+  width: 100%;
+  margin-top: 45px;
+  overflow: hidden;
+  background-color: rgb(209, 209, 209);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-button {
+  background-color: cornflowerblue;
+}

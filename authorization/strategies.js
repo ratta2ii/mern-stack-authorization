@@ -1,7 +1,7 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const GitHubStrategy = require("passport-github").Strategy;
-const { User } = require("./../database/db");
+const { User } = require("../database/db");
 
 // (NOTES: @STRATEGIES 001)
 //* "local" strategy is the passportAuth file
@@ -15,7 +15,7 @@ exports.googleStrategy = new GoogleStrategy(
     userProfileURL: process.env.GOOGLE_USER_PROFILE_URL,
   },
   function (accessToken, refreshToken, profile, done) {
-    const newGoogleAccountObj = { accountType: "google", uid: profile.id };
+    const newGoogleAccountObj = { accountType: "google", accessToken, uid: profile.id };
     createNewAccountHelper(profile, newGoogleAccountObj, done);
   }
 );
@@ -31,6 +31,7 @@ exports.facebookStrategy = new FacebookStrategy(
   function (accessToken, refreshToken, profile, done) {
     const newFacebookAccountObj = {
       accountType: "facebook",
+      accessToken,
       uid: profile._json.id,
     };
     createNewAccountHelper(profile, newFacebookAccountObj, done);
@@ -46,7 +47,7 @@ exports.gitHubStrategy = new GitHubStrategy(
     callbackURL: process.env.GITHUB_CALLBACK_URL,
   },
   function (accessToken, refreshToken, profile, done) {
-    const newGitHubAccountObj = { accountType: "github", uid: profile.id };
+    const newGitHubAccountObj = { accountType: "github", accessToken, uid: profile.id };
     createNewAccountHelper(profile, newGitHubAccountObj, done);
   }
 );
@@ -88,11 +89,62 @@ function createNewAccountHelper(profile, newAccountObj, done) {
 
 //! REFERENCE NOTES BELOW
 //? -----------------------------------------------------
-
 /*
+? Passport.js Strategies (Currently using google OAuth only with a diff method)
+! Google OAuth Routes
+router.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+router.get(
+  "/auth/google/redirect",
+  passport.authenticate("google", {
+    failureRedirect: "http://localhost:5000/login",
+  }),
+  function (req, res) {
+    const myURL = `http://localhost:5000/dashboard/user/${req.user._id}`;
+    res.redirect(myURL);
+  }
+);
+
+! Facebook OAuth Routes
+router.get(
+  "/auth/facebook",
+  passport.authenticate("facebook", { scope: ["email"] })
+);
+
+router.get(
+  "/auth/facebook/redirect",
+  passport.authenticate("facebook", {
+    failureRedirect: "http://localhost:5000/login",
+  }),
+  function (req, res) {
+    const myURL = `http://localhost:5000/dashboard/user/${req.user._id}`;
+    res.redirect(myURL);
+  }
+);
+
+! GitHub OAuth Routes
+router.get(
+  "/auth/github",
+  passport.authenticate("github", { scope: ["email"] })
+);
+
+router.get(
+  "/auth/github/redirect",
+  passport.authenticate("github", {
+    failureRedirect: "http://localhost:5000/login",
+  }),
+  function (req, res) {
+    const myURL = `http://localhost:5000/dashboard/user/${req.user._id}`;
+    res.redirect(myURL);
+  }
+);
+
 ? (REF: @STRATEGIES 001)
 * NEW VERSION: passport.use(User.createStrategy());
-An alternate way of implemting a local strategy. New version registers a single method to passport
+An alternate way of implementing a local strategy. New version registers a single method to passport
 * PREVIOUS VERSION: See below
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy; /* this should be after passport
