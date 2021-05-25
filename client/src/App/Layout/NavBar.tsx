@@ -18,7 +18,7 @@ const NavBar = () => {
 
   const handleLogUserOut = () => {
     logUserOut().then(() => {
-      history.push("/login");
+      history.push("/dashboard");
     });
   };
 

@@ -85,7 +85,7 @@ const Dashboard = (props: any) => {
           as={Link}
           to="/login"
           size="huge"
-          style={{ marginTop: 15 }}
+          style={{ marginTop: 15, marginBottom: 100 }}
         >
           Go to Login
         </Button>
@@ -95,7 +95,7 @@ const Dashboard = (props: any) => {
           as={Link}
           to={`/dashboard/user/"${currentUserId}`}
           size="huge"
-          style={{ marginTop: 15 }}
+          style={{ marginTop: 15, marginBottom: 100 }}
         >
           Go to "Authorized" Dashboard
         </Button>
