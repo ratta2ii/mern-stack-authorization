@@ -10,8 +10,6 @@ exports.userSchema = new mongoose.Schema({
     // email addresses will be synonymous with username, and are stored here in the username field
     username: { type: String, require: true, index: true, unique: true, sparse: true },
     password: String,
-    salt: String,
-    hash: String,
     // (NOTES: @MODELS 001)
     secret: String,
     // (NOTES: @MODELS 002)
