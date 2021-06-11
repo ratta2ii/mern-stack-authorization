@@ -28,19 +28,31 @@ const Dashboard = (props: any) => {
       <p style={{ fontWeight: 600 }}>Description:</p>
       <p>
         The purpose of this application is to demonstrate a working knowledge of
-        authentication, authorization, OAuth 2.0 protocols, and the different
-        security levels for each implementation. The login services for the
-        application includes OAuth services, Salting and Hashing, as well as
-        Cookies and Sessions. More specifically, a Google OAuth strategy offers
-        users a way to be authenticated using the OAuth 2.0 protocols; This
+        various Auth Services, and the different security levels for each
+        implementation. The application includes OAuth services, Salting and
+        Hashing for standard login, as well as Cookies and Sessions.
+        Additionally, a Google OAuth strategy offers users a way to be
+        authorized to access the API using the OAuth 2.0 protocols; This
         strategy is considered the most secure for this application (Security
-        level 6). I have also added a "local" strategy as well, that allows a
-        user to register a new account with a username (email) and password
-        -instead of using the more secure OAuth services. The password will be a
-        salted, hashed password (Security level 4), that will be stored in a
-        MongoDB database. In addition to the Auth services, the application also
-        demonstrates a working knowledge on how to both build, and deploy, a
-        full-stack MERN application.
+        level 6).
+      </p>
+      <p>
+        I have also added a "local" strategy as well, that allows a user to
+        register a new account with just a username and password -instead of
+        using the more secure OAuth services. The password will be hashed, with
+        salt (Security level 4), before being stored in a MongoDB database. In
+        addition to the Auth services, the application also demonstrates a
+        working knowledge on how to both build, and deploy, a full-stack MERN
+        application.
+      </p>
+      <p style={{ fontStyle: "italic" }}>** Disclaimer **</p>
+      <p>
+        When Google authorizes a user for the first time, a user is prompted to
+        enter a password after already receiving authorization to the
+        API. I understand that this removes some of the purpose for this OAuth
+        strategy, but for the sake of this app, and with trying to demonstrate a
+        variety Auth Services, this prompt actually enables local sign-in
+        capabilities for all subsequent visits to the app.
       </p>
       <p style={{ fontWeight: 600 }}>Details:</p>
       <ul style={{ lineHeight: "1.5rem" }}>
