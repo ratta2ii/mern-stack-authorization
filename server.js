@@ -8,7 +8,11 @@ const session = require("express-session");
 const passport = require("passport");
 require("./authorization/passportAuth");
 var routes = require(__dirname + "/routes/authRoutes");
-const { User } = require("./database/db");
+const { User } = require("./database/db"); 
+const helmet = require('helmet');
+
+// Adds security headers
+app.use(helmet());
 
 //? Express v4.16.0 and higher no longer use body-parser
 // --------------------------

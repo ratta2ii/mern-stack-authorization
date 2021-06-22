@@ -27,7 +27,7 @@ const AuthUserDashBoard = (props: any) => {
   // //* Loading Indicator
   if (loadingInitial && !currentUser && !isAuthenticated)
     return <LoadingComponent content="Loading app" />;
-  // If a user signs in through OAuth (not "locally"), they will be asked to choose a password that can then be associated with that username and account returned by a sign-in provider. This will enable them to use "local" sign-in with their username (email) and password in subsequent visits, or, any, and all of the OAuth services will always be available and connected to the same user account.
+  // If a user signs in through OAuth (not "locally"), they will be asked to choose a password that can then be associated with that username and account returned by provider. This will enable them to use "local" sign-in with their username (email) and password in subsequent visits, or, any, and all of the OAuth services will always be available and connected to the same user account.
   else if (
     currentUser &&
     isAuthenticated &&
