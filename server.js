@@ -14,6 +14,13 @@ const helmet = require('helmet');
 // Adds security headers
 app.use(helmet());
 
+// TODO: Currently disabled
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
+
 //? Express v4.16.0 and higher no longer use body-parser
 // --------------------------
 app.use(express.json());
