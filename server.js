@@ -16,12 +16,12 @@ app.use(helmet());
 
 // TODO: Currently disabled
 app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        scriptSrc: ["'self'", 'sha256-EEmuAbOJyAdZM+wSTy8jvfjugtY8gKfcRXH4HekPE+4='],
-      },
-    }
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "script-src": ["'self'", "https://mern-stack-authentication.herokuapp.com"],
+      "style-src": null,
+    },
   })
 );
 
