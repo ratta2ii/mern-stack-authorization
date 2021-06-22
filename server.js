@@ -17,7 +17,11 @@ app.use(helmet());
 // TODO: Currently disabled
 app.use(
   helmet({
-    contentSecurityPolicy: false,
+    contentSecurityPolicy: {
+      directives: {
+        scriptSrc: ["'self'", 'sha256-EEmuAbOJyAdZM+wSTy8jvfjugtY8gKfcRXH4HekPE+4='],
+      },
+    }
   })
 );
 
@@ -83,3 +87,7 @@ if (port == null || port == "") {
 app.listen(port, function () {
   console.log(`Server is running on PORT: ${port}`);
 });
+
+
+//! This needs to be added
+//! INLINE_RUNTIME_CHUNK=false
