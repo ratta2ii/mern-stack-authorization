@@ -21,6 +21,7 @@ app.use(
     directives: {
       "script-src": ["'unsafe-inline'", "'sha256-EEmuAbOJyAdZM+wSTy8jvfjugtY8gKfcRXH4HekPE+4='"],
       "style-src": ["'self'", "'unsafe-inline'" ],
+      'style-src-elem': ["'self'", "'unsafe-inline'"],
     },
   })
 );
