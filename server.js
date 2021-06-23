@@ -19,7 +19,7 @@ app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
     directives: {
-      "script-src": ["'unsafe-inline'", "'sha256-EEmuAbOJyAdZM+wSTy8jvfjugtY8gKfcRXH4HekPE+4='"],
+      "script-src": ["'https://mern-stack-authentication.herokuapp.com/'", "'sha256-EEmuAbOJyAdZM+wSTy8jvfjugtY8gKfcRXH4HekPE+4='"],
       "style-src": ["'self'", "'unsafe-inline'" ],
       'style-src-elem': ["'self'", "'unsafe-inline'"],
     },
