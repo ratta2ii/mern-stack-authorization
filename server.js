@@ -19,7 +19,7 @@ app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
     directives: {
-      "script-src": ["'sha256-EEmuAbOJyAdZM+wSTy8jvfjugtY8gKfcRXH4HekPE+4='"],
+      "script-src": ["'sha256-EEmuAbOJyAdZM+wSTy8jvfjugtY8gKfcRXH4HekPE+4='", "'unsafe-inline'"],
       "style-src": ["'self'", "'unsafe-inline'" ],
     },
   })
