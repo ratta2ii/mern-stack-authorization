@@ -12,19 +12,14 @@ const { User } = require("./database/db");
 const helmet = require('helmet');
 
 // Adds security headers
-app.use(helmet());
+app.use(
+    helmet({
+      contentSecurityPolicy: false,
+    })
+  );
 
 // ? helmetjs.github.io
-app.use(
-  helmet.contentSecurityPolicy({
-    useDefaults: true,
-    directives: {
-      "script-src": ["'self'", "'sha256-EEmuAbOJyAdZM+wSTy8jvfjugtY8gKfcRXH4HekPE+4='", "'https://apis.google.com/js/api.js'"],
-     // "style-src": ["'self'", "'unsafe-inline'"],
-    },
-  })
-);
-
+// CSP currently disabled above
 // app.use(
 //   helmet.contentSecurityPolicy({
 //     useDefaults: true,
