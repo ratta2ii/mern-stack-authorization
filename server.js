@@ -12,23 +12,19 @@ const { User } = require("./database/db");
 const helmet = require('helmet');
 
 // Adds security headers
-app.use(
-    helmet({
-      contentSecurityPolicy: false,
-    })
-  );
+app.use(helmet());
 
 // ? helmetjs.github.io
-// CSP currently disabled above
-// app.use(
-//   helmet.contentSecurityPolicy({
-//     useDefaults: true,
-//     directives: {
-//       "script-src": ["'self'", "'sha256-EEmuAbOJyAdZM+wSTy8jvfjugtY8gKfcRXH4HekPE+4='"],
-//       "style-src": ["'self'", "'unsafe-inline'"],
-//     },
-//   })
-// );
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "script-src": ["'self'", "'unsafe-inline'", "'sha256-EEmuAbOJyAdZM+wSTy8jvfjugtY8gKfcRXH4HekPE+4='"],
+      "script-src-elem": ["'sha256-EEmuAbOJyAdZM+wSTy8jvfjugtY8gKfcRXH4HekPE+4='"],
+      "style-src": ["'self'", "'unsafe-inline'"],
+    },
+  })
+);
 
 //? Express v4.16.0 and higher no longer use body-parser
 // --------------------------
