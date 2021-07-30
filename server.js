@@ -8,19 +8,20 @@ const session = require("express-session");
 const passport = require("passport");
 require("./authorization/passportAuth");
 var routes = require(__dirname + "/routes/authRoutes");
-const { User } = require("./database/db"); 
+const { User } = require("./database/db");
 const helmet = require('helmet');
 
 // Adds security headers
 app.use(helmet());
 
-// TODO: Currently disabled
+// ? helmetjs.github.io
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
     directives: {
       "script-src": ["'self'", "'unsafe-inline'", "'sha256-EEmuAbOJyAdZM+wSTy8jvfjugtY8gKfcRXH4HekPE+4='"],
-      "style-src": ["'self'", "'unsafe-inline'" ],
+      "script-src-elem": ["'sha256-EEmuAbOJyAdZM+wSTy8jvfjugtY8gKfcRXH4HekPE+4='"],
+      "style-src": ["'self'", "'unsafe-inline'"],
     },
   })
 );
@@ -88,6 +89,5 @@ app.listen(port, function () {
   console.log(`Server is running on PORT: ${port}`);
 });
 
-
-//! This needs to be added
-//! INLINE_RUNTIME_CHUNK=false
+//   TODO This needs to be added to env variables
+//*  INLINE_RUNTIME_CHUNK=false
