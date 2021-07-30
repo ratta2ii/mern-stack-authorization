@@ -15,6 +15,16 @@ const helmet = require('helmet');
 app.use(helmet());
 
 // ? helmetjs.github.io
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "script-src": ["'sha256-EEmuAbOJyAdZM+wSTy8jvfjugtY8gKfcRXH4HekPE+4='"],
+     // "style-src": ["'self'", "'unsafe-inline'"],
+    },
+  })
+);
+
 // app.use(
 //   helmet.contentSecurityPolicy({
 //     useDefaults: true,
