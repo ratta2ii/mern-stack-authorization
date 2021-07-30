@@ -15,15 +15,15 @@ const helmet = require('helmet');
 app.use(helmet());
 
 // ? helmetjs.github.io
-app.use(
-  helmet.contentSecurityPolicy({
-    useDefaults: true,
-    directives: {
-      "script-src": ["'self'", "'https://apis.google.com", "'sha256-EEmuAbOJyAdZM+wSTy8jvfjugtY8gKfcRXH4HekPE+4='"],
-      "style-src": ["'self'", "'unsafe-inline'"],
-    },
-  })
-);
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     useDefaults: true,
+//     directives: {
+//       "script-src": ["'self'", "'sha256-EEmuAbOJyAdZM+wSTy8jvfjugtY8gKfcRXH4HekPE+4='"],
+//       "style-src": ["'self'", "'unsafe-inline'"],
+//     },
+//   })
+// );
 
 //? Express v4.16.0 and higher no longer use body-parser
 // --------------------------
