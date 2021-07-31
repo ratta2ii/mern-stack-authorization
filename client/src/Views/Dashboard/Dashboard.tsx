@@ -25,36 +25,37 @@ const Dashboard = (props: any) => {
       }}
     >
       <p style={{ fontWeight: 600, fontSize: 25 }}>MERN Stack Authentication</p>
-      <p style={{ fontWeight: 600 }}>Description:</p>
+      <p style={{ fontWeight: 600, fontSize: 18 }}>Description:</p>
       <p>
         The purpose of this application is to demonstrate a working knowledge of
         various Auth Services, and the different security levels for each
-        implementation. The application includes OAuth services, Salting and
-        Hashing for standard login, as well as Cookies and Sessions.
-        Additionally, a Google OAuth strategy offers users a way to be
-        authorized to access the API using the OAuth 2.0 protocols; This
-        strategy is considered the most secure for this application (Security
-        level 6).
+        implementation. The application includes Salting and Hashing, Cookies
+        and Sessions, as well as OAuth services.
       </p>
       <p>
-        I have also added a "local" strategy as well, that allows a user to
-        register a new account with just a username and password -instead of
+        A Google OAuth strategy offers users a way to be authenticated, and then
+        authorized, to access the backend API using OAuth 2.0 protocols; This
+        strategy is considered the most secure for this application (Security
+        level 6). I have also added a "local" strategy as well, that allows a
+        user to register a new account with a username and password -instead of
         using the more secure OAuth services. The password will be hashed, with
-        salt (Security level 4), before being stored in a MongoDB database. In
-        addition to the Auth services, the application also demonstrates a
+        salt (Security level 4), and then stored in a MongoDB database.
+      </p>
+      <p>
+        In addition to the Auth services, the application also demonstrates a
         working knowledge on how to both build, and deploy, a full-stack MERN
-        application.
+        application to a production environment.
       </p>
       <p style={{ fontStyle: "italic" }}>** Disclaimer **</p>
-      <p>
+      <p style={{ fontStyle: "italic" }}>
         When Google authorizes a user for the first time, a user is prompted to
-        enter a password after already receiving authorization to the
-        API. I understand that this removes some of the purpose for this OAuth
+        enter a password after already receiving authorization to the API. I
+        understand that this removes some of the purpose for this OAuth
         strategy, but for the sake of this app, and with trying to demonstrate a
         variety Auth Services, this prompt actually enables local sign-in
         capabilities for all subsequent visits to the app.
       </p>
-      <p style={{ fontWeight: 600 }}>Details:</p>
+      <p style={{ fontWeight: 600, fontSize: 18 }}>Details:</p>
       <ul style={{ lineHeight: "1.5rem" }}>
         <li>
           MongoDB, Express, React, Node.js (MERN Stack), w/ Passport.js
@@ -79,17 +80,14 @@ const Dashboard = (props: any) => {
           returning the same user object
         </li>
       </ul>
-      <p style={{ fontWeight: 600 }}>Important Note:</p>
+      <p style={{ fontWeight: 600, fontSize: 18 }}>Important Note:</p>
       <p>
         <span style={{ textDecoration: "underline", fontWeight: "bold" }}>
           The application is still in the development phase. Please note that
           proper error handling, as well as the implementation of additional
-          OAuth strategies, will still be added before fully reaching my project
+          OAuth strategies will still be added before fully reaching my project
           goals.
-        </span>{" "}
-        You can, however, still register and log in using the Google OAuth
-        services, as well as the more traditional way of entering a username and
-        password.
+        </span>
       </p>
       <TestAuthButton />
       {!currentUser && (
@@ -97,7 +95,13 @@ const Dashboard = (props: any) => {
           as={Link}
           to="/login"
           size="huge"
-          style={{ marginTop: 15, marginBottom: 100 }}
+          style={{
+            marginTop: 15,
+            marginBottom: 100,
+            fontSize: "1.2rem",
+            background: "black",
+            color: "white",
+          }}
         >
           Go to Login
         </Button>
@@ -107,7 +111,14 @@ const Dashboard = (props: any) => {
           as={Link}
           to={`/dashboard/user/"${currentUserId}`}
           size="huge"
-          style={{ marginTop: 15, marginBottom: 100 }}
+          inverted
+          style={{
+            marginTop: 15,
+            marginBottom: 100,
+            fontSize: "1.2rem",
+            background: "black",
+            color: "white",
+          }}
         >
           Go to "Authorized" Dashboard
         </Button>
